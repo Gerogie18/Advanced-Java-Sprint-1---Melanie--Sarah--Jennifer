@@ -26,5 +26,27 @@ public class MedicationTrackingSystem {
         this.doctors = doctors;
     }
 
+
+    //Patients
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
+    }
+    public void addPatient(Patient patient) {
+        patients.add(patient);
+    }
+    //Doctors
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+    //Medications
+    public void setMedications(List<Medication> medications) {
+        this.medications = medications;
+    }
+    public List<Medication> getMedications() {
+        return medications;
+    }
 }
 
