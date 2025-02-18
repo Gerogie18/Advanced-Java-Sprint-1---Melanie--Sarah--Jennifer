@@ -1,22 +1,24 @@
-//package medicationsystem;
+package main.util;//package medicationsystem;
+import main.model.Patient;
+
 import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) {
-       // MedicationSystem medicationTracking = new MedicationTracking();
+       // main.service.MedicationSystem medicationTracking = new MedicationTracking();
         boolean exit = false;
 
         while (!exit){
             Scanner scanner = new Scanner(System.in);
             System.out.println("=====Welcome To The Pharmacy Med Tracking System=====");
-            System.out.println("Menu Options: ");
-            System.out.println("1: Add A New Patient");
-            System.out.println("2: Add A New Doctor");
-//            System.out.println("3: Add A New Medication To The Pharmacy");
+            System.out.println("main.util.Menu Options: ");
+            System.out.println("1: Add A New main.model.Patient");
+            System.out.println("2: Add A New main.model.Doctor");
+//            System.out.println("3: Add A New main.model.Medication To The Pharmacy");
 //            System.out.println("4: Print System Report");
 //            System.out.println("5: Check If Meds Are Expired");
-//            System.out.println("6: Process A New Prescription");
-//            System.out.println("7: Print All Scripts For Specific Doctor");
+//            System.out.println("6: Process A New main.model.Prescription");
+//            System.out.println("7: Print All Scripts For Specific main.model.Doctor");
 //            System.out.println("8: Restock the drugs in the pharmacy");
 //            System.out.println("9: Print all scripts for specific patient");
             System.out.println("10: Exit");
