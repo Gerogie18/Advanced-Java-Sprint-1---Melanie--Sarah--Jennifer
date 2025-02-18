@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeParseException;
 
 public class Person {
     private String lastName;
@@ -11,8 +12,12 @@ public class Person {
     public Person(String lastName, String firstName, String birthdateStr, String phoneNumber) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.birthdate = LocalDate.parse(birthdateStr);
-        this.phoneNumber = phoneNumber;
+        try {
+            this.birthdate = LocalDate.parse(birthdateStr);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid birthdate format, expected YYYY-MM-DD.");
+        }
+        setPhoneNumber(phoneNumber); // Validate phone number during initialization
     }
     public Person(Person otherPerson) {
         this.lastName = otherPerson.lastName;
@@ -45,22 +50,41 @@ public class Person {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if (!isValidPhoneNumber(phoneNumber)) {
+            throw new IllegalArgumentException("Invalid phone number. Must be 10 digits long.");
+        }
+        this.phoneNumber = formatPhoneNumber(phoneNumber);
     }
 
-    public int returnAge() {
-        LocalDate today = LocalDate.now();
+    private boolean isValidPhoneNumber(String phoneNumber) {
+        String digits = phoneNumber.replaceAll("\\D+", "");
+        return digits.length() == 10;
+    }
 
+    private String formatPhoneNumber(String phoneNumber) {
+        String digits = phoneNumber.replaceAll("\\D+", "");
+        return String.format("(%s) %s-%s",
+                digits.substring(0, 3),
+                digits.substring(3, 6),
+                digits.substring(6, 10));
+    }
+
+
+    public int calculateAge(LocalDate birthdate) {
         // Calculate the period between the birthdate and today
-        Period elapsedTime = Period.between(birthdate, today);
+        Period elapsedTime = Period.between(birthdate, LocalDate.now());
         return elapsedTime.getYears();
     }
-
 
     // toString method
     @Override
     public String toString() {
-        return firstName + " " + lastName + "(" + returnAge() + "), " + phoneNumber;
+        return String.format("%s %s (%d years old), %s",
+                firstName,
+                lastName,
+                calculateAge(birthdate),
+                phoneNumber);
     }
 }
