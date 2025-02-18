@@ -1,3 +1,5 @@
+package main.model;
+
 import java.util.Arrays;
 
 public class Doctor extends Person{
@@ -6,14 +8,14 @@ public class Doctor extends Person{
 
         // Constructor
         public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, Patient[] patients) {
-            super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
+            super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
             this.specialization = specialization;
             this.patients = patients;
         }
 
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
-            super(otherDoctor);  // Call to superclass (Person) constructor
+            super(otherDoctor);  // Call to superclass (main.model.Person) constructor
             this.specialization = otherDoctor.specialization;
             this.patients = otherDoctor.patients;
         }

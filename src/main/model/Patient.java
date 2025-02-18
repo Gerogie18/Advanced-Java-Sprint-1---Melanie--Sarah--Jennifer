@@ -1,17 +1,19 @@
+package main.model;
+
 public class Patient extends Person {
     private String medications;
     private String prescriptions;
 
     // Constructor
     public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber, String medications, String prescriptions) {
-        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
+        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
         this.medications = medications;
         this.prescriptions = prescriptions;
     }
 
     //copyConstructor
     public Patient(Patient otherPatient) {
-        super(otherPatient);  // Call to superclass (Person) constructor
+        super(otherPatient);  // Call to superclass (main.model.Person) constructor
         this.medications = otherPatient.medications;
         this.prescriptions = otherPatient.prescriptions;
     }
