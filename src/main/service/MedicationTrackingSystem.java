@@ -20,5 +20,11 @@ public class MedicationTrackingSystem {
         this.patients = new ArrayList<>();
     }
 
+    public MedicationTrackingSystem(List<Patient> patients, List<Medication> medications, List<Doctor> doctors) {
+        this.patients = patients;
+        this.medications = medications;
+        this.doctors = doctors;
+    }
+
 }
 
