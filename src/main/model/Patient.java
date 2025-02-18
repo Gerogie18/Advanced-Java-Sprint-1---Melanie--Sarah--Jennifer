@@ -1,93 +1,93 @@
 package main.model;
 
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
-public class Person {
-    private String lastName;
-    private String firstName;
-    private final LocalDate birthdate;
-    private String phoneNumber;
+public class Patient extends Person {
+    private List<Medication> medications;
+    private List<Prescription> prescriptions;
 
     // Constructor
-    public Person(String lastName, String firstName, String birthdateStr, String phoneNumber) {
-        this.lastName = lastName;
-        this.firstName = firstName;
-        try {
-            this.birthdate = LocalDate.parse(birthdateStr);
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("Invalid birthdate format, expected YYYY-MM-DD.");
-        }
-        setPhoneNumber(phoneNumber); // Validate phone number during initialization
+    public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber, Medication medications, Prescription prescriptions) {
+        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
+        this.medications = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
     }
-    public Person(Person otherPerson) {
-        this.lastName = otherPerson.lastName;
-        this.firstName = otherPerson.firstName;
-        this.birthdate = otherPerson.birthdate;
-        this.phoneNumber = otherPerson.phoneNumber;
+
+    //copyConstructor
+    public Patient(Patient otherPatient) {
+        super(otherPatient);  // Call to superclass (main.model.Person) constructor
+        this.medications = otherPatient.medications;
+        this.prescriptions = otherPatient.prescriptions;
     }
 
     // Getters and Setters
-    public String getLastName() {
-        return lastName;
+    public List<Medication> getMedications() {
+        return medications;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+//    public void setMedications(List<Medication> medications) {
+//        this.medications = medications;
+//    }
+
+    public List<Prescription> getPrescriptions() {
+        return prescriptions;
     }
 
-    public String getFirstName() {
-        return firstName;
+//    public void setPrescriptions(String prescriptions) {
+//        this.prescriptions = prescriptions;
+//    }
+
+    // Methods to manipulate the medication and prescription list
+    public void addMedication(Medication medication) {
+        medications.add(medication);
     }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void removeMedication(Medication medication) {
+        medications.remove(medication);
     }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
+    public void addPrescription(Prescription prescription) {
+        prescriptions.add(prescription);
     }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public void removePrescription(Prescription prescription) {
+        prescriptions.remove(prescription);
     }
-
-
-    public void setPhoneNumber(String phoneNumber) {
-        if (!isValidPhoneNumber(phoneNumber)) {
-            throw new IllegalArgumentException("Invalid phone number. Must be 10 digits long.");
-        }
-        this.phoneNumber = formatPhoneNumber(phoneNumber);
-    }
-
-    private boolean isValidPhoneNumber(String phoneNumber) {
-        String digits = phoneNumber.replaceAll("\\D+", "");
-        return digits.length() == 10;
-    }
-
-    private String formatPhoneNumber(String phoneNumber) {
-        String digits = phoneNumber.replaceAll("\\D+", "");
-        return String.format("(%s) %s-%s",
-                digits.substring(0, 3),
-                digits.substring(3, 6),
-                digits.substring(6, 10));
+    public void clearPrescriptions() {
+        this.prescriptions = new ArrayList<>();
     }
 
 
-    public int calculateAge(LocalDate birthdate) {
-        // Calculate the period between the birthdate and today
-        Period elapsedTime = Period.between(birthdate, LocalDate.now());
-        return elapsedTime.getYears();
+
+    public int getNumberOfPrescriptions() {
+        return prescriptions.size();
     }
+
+    // Method to get a sorted list of prescription / medication names
+//    public List<String> getMedicationList() {
+//        // create shallow copy of list to avoid modifying the original
+//        List<Medication> sortedMedications = new ArrayList<>(medications);
+//
+//        // Sort the new list based on the last name
+//        // Note Medication::getFirstName === (Medication p) -> p.getFirstName().
+//        // This is sensitive to case
+//        Comparator<Medication> byName = Comparator
+//                .comparing(Medication::getName);
+//
+//        sortedMedication.sort(byName);
+//
+//        // Create a ArrayList to store the names
+//        List<String> MedicationList = new ArrayList<>();
+//        for (Medication medication : sortedMedication) {
+//            medicationList.add(medication.getName() + ", " + medication.getDose());
+//        }
+//        return Collections.unmodifiableList(medicationList);
+//    }
+
 
     // toString method
     @Override
     public String toString() {
-        return String.format("%s %s (%d years old), %s",
-                firstName,
-                lastName,
-                calculateAge(birthdate),
-                phoneNumber);
+        return super.toString() + ", Medications: " + medications + ", Prescriptions: " + prescriptions;
     }
 }
