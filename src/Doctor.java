@@ -1,14 +1,17 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 public class Doctor extends Person{
         private String specialization;
-        private Patient[] patients;
+        private List<Patient> patients;
 
         // Constructor
-        public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, Patient[] patients) {
+        public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
             super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
             this.specialization = specialization;
-            this.patients = patients;
+            this.patients = new ArrayList<>();
         }
 
         //copyConstructor
@@ -26,33 +29,53 @@ public class Doctor extends Person{
         public void setSpecialization(String specialization) {
             this.specialization = specialization;
         }
+        // return a viewable list of patients but prevents the list from being changed
+        public List<Patient> getPatients() {
+            return Collections.unmodifiableList(patients);
+        }
 
-        public Patient[] getPatients() {
-            return patients;
+        // Methods to manipulate the patients list
+        public void addPatient(Patient patient) {
+            patients.add(patient);
+        }
+
+        public void removePatient(Patient patient) {
+            patients.remove(patient);
+        }
+
+        public void clearPatients() {
+            this.patients = new ArrayList<>();
+        }
+
+        public int getNumberOfPatients() {
+            return patients.size();
         }
 
         // Method to get a sorted list of patient names
-        public String[] getPatientList() {
-            // Clone the array to avoid modifying the original array
-            Patient[] sortedPatients = patients.clone();
+        public List<String> getPatientList() {
+            // create shallow copy of list to avoid modifying the original
+            List<Patient> sortedPatients = new ArrayList<>(patients);
 
-            // Sort the cloned array based on the last name
-            Arrays.sort(sortedPatients, (p1, p2) -> p1.getLastName().compareToIgnoreCase(p2.getLastName()));
+            // Sort the new list based on the last name
+            // Note Patient::getFirstName === (Patient p) -> p.getFirstName().
+            // This is sensitive to case
+            Comparator<Patient> byLastNameThenFirstName = Comparator
+                    .comparing(Patient::getLastName)
+                    .thenComparing(Patient::getFirstName);
 
-            // Create a String array to store the names
-            String[] patientList = new String[sortedPatients.length];
-            for (int i = 0; i < sortedPatients.length; i++) {
-                patientList[i] = sortedPatients[i].getFirstName() + " " + sortedPatients[i].getLastName();
+            sortedPatients.sort(byLastNameThenFirstName);
+
+            // Create a ArrayList to store the names
+            List<String> patientList = new ArrayList<>();
+            for (Patient patient : sortedPatients) {
+                patientList.add(patient.getLastName() + ", " + patient.getFirstName());
             }
-            return patientList;
-        }
-        public void setPatients(Patient[] patients) {
-            this.patients = patients;
+            return Collections.unmodifiableList(patientList);
         }
 
         // toString method
         @Override
         public String toString() {
-            return super.toString() + ", specialization: " + specialization + ", patients: " + Arrays.toString(getPatientList());
+            return super.toString() + ", specialization: " + specialization + ", patients: " + getPatientList();
         }
     }
