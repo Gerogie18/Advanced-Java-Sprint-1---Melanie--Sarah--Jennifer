@@ -78,6 +78,16 @@ public class MedicationTrackingSystem {
                 .filter(patient -> patient.getLastName().toLowerCase().contains(lastName.toLowerCase()))
                 .collect(Collectors.toList());
     }
+    public List<Prescription> getPrescriptionsByPatient(Patient patient) {
+        return patient.getPrescriptions();
+    }
+
+    public List<Prescription> getPrescriptionsByPatient(int id) {
+        Patient patient = searchPatientsById(id).get(0);
+        return patient.getPrescriptions();
+    }
+
+
     //Doctors
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
