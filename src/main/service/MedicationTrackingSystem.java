@@ -52,6 +52,14 @@ public class MedicationTrackingSystem {
         patients.add(patient);
     }
     public void addPrescriptionToPatient(Patient patient, Prescription prescription) {
+        this.lastPrescriptionId = generateId(lastPrescriptionId);
+        prescription.setId(lastPrescriptionId);
+        patient.addPrescription(prescription);
+    }
+    public void addPrescriptionToPatient(int patientId, Prescription prescription) {
+        Patient patient = searchPatientsById(patientId).get(0);
+        this.lastPrescriptionId = generateId(lastPrescriptionId);
+        prescription.setId(lastPrescriptionId);
         patient.addPrescription(prescription);
     }
     public void addPrescriptionToPatient(int patientId, Prescription prescription) {
