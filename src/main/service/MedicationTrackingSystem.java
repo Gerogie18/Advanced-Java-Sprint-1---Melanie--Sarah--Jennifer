@@ -7,6 +7,7 @@ import main.model.Patient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.time.LocalDate;
 
 public class MedicationTrackingSystem {
@@ -52,6 +53,7 @@ public class MedicationTrackingSystem {
     //Doctors
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
+        initializeLastDoctorId();
     }
     public List<Doctor> getDoctors() {
         return doctors;
@@ -64,7 +66,7 @@ public class MedicationTrackingSystem {
     //Medications
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
-        initializeLastMedicationId()
+        initializeLastMedicationId();
     }
     public List<Medication> getMedications() {
         return medications;
