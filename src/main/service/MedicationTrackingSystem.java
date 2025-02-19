@@ -39,6 +39,11 @@ public class MedicationTrackingSystem {
     //Patients
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
+        initializeLastPatientId();
+        initializeLastPrescriptionId();
+    }
+    public List<Patient> getPatients() {
+        return patients;
     }
     public void addPatient(Patient patient) {
         patients.add(patient);
@@ -58,6 +63,8 @@ public class MedicationTrackingSystem {
         return medications;
     }
     @Override
+    public void addPrescription(Prescription prescription) {
+        lastPrescriptionId = GenerateId(lastPrescriptionId);
     private int GenerateId (int id) {
         int currentYear = LocalDate.now().getYear();
         String currentMonthStr = String.format("%02d", LocalDate.now().getMonth().getValue());
@@ -71,18 +78,38 @@ public class MedicationTrackingSystem {
     }
     private void initializeIds() {
         this.lastDoctorId = doctors.stream()
+        this.lastDoctorId = initializeLastDoctorId();
+        this.lastPatientId = initializeLastPatientId();
+        this.lastMedicationId = initializeLastMedicationId();
+        this.lastPrescriptionId = initializeLastPrescriptionId();
+    }
+
+    private int initializeLastDoctorId() {
+        return doctors.stream()
                 .mapToInt(Doctor::getId)
                 .max()
                 .orElse(0);
         this.lastPatientId = patients.stream()
+    }
+
+    private int initializeLastPatientId() {
+        return patients.stream()
                 .mapToInt(Patient::getId)
                 .max()
                 .orElse(0);
         this.lastMedicationId = medications.stream()
+    }
+
+    private int initializeLastMedicationId() {
+        return medications.stream()
                 .mapToInt(Medication::getId)
                 .max()
                 .orElse(0);
         this.lastPrescriptionId = patients.stream()
+    }
+
+    private int initializeLastPrescriptionId() {
+        return patients.stream()
                 .flatMap(patient -> patient.getPrescriptions().stream())
                 .mapToInt(Prescription::getId)
                 .max()
