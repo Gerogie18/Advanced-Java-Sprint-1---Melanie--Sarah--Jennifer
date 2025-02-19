@@ -17,8 +17,7 @@ public class MedicationTrackingSystem {
     private List<Medication> medications;
     private List<Doctor> doctors;
 
-    private int lastDoctorId;
-    private int lastPatientId;
+    private int lastPersonId;
     private int lastMedicationId;
     private int lastPrescriptionId;
 
@@ -40,7 +39,7 @@ public class MedicationTrackingSystem {
     //Patients
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
-        initializeLastPatientId();
+        initializeLastPersonId();
         initializeLastPrescriptionId();
     }
     public List<Patient> getPatients() {
@@ -112,7 +111,7 @@ public class MedicationTrackingSystem {
     //Doctors
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
-        initializeLastDoctorId();
+        initializeLastPersonId();
     }
     public List<Doctor> getDoctors() {
         return doctors;
@@ -226,22 +225,14 @@ public class MedicationTrackingSystem {
         }
     }
     private void initializeIds() {
-        this.lastDoctorId = initializeLastDoctorId();
-        this.lastPatientId = initializeLastPatientId();
+        this.LastPersonID = initializeLastPersonId();
         this.lastMedicationId = initializeLastMedicationId();
         this.lastPrescriptionId = initializeLastPrescriptionId();
     }
 
-    private int initializeLastDoctorId() {
-        return doctors.stream()
-                .mapToInt(Doctor::getId)
-                .max()
-                .orElse(0);
-    }
-
-    private int initializeLastPatientId() {
-        return patients.stream()
-                .mapToInt(Patient::getId)
+    private int initializeLastPersonId(List<? extends Person> people) {
+        return people.stream()
+                .mapToInt(Person::getId)
                 .max()
                 .orElse(0);
     }
