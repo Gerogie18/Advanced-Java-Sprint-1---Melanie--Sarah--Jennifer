@@ -48,5 +48,13 @@ public class MedicationTrackingSystem {
     public List<Medication> getMedications() {
         return medications;
     }
+    @Override
+    public String toString() {
+        return "MedicationTrackingSystem{" +
+                "patients=" + patients +
+                ", medications=" + medications +
+                ", doctors=" + doctors +
+                '}';
+    }
 }
 
