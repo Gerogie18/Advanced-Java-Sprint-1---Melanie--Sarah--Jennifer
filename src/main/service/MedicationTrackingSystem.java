@@ -94,6 +94,7 @@ public class MedicationTrackingSystem {
     public List<Prescription> getPrescriptionsByPatient(int id) {
         Patient patient = searchPatientsById(id).get(0);
         return patient.getPrescriptions();
+    }
     public List<Prescription> getPrescriptionsByDoctor(Doctor doctor) {
         return patients.stream()
                 .flatMap(patient -> patient.getPrescriptions().stream())
