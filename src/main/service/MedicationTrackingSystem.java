@@ -147,6 +147,7 @@ public class MedicationTrackingSystem {
                 .filter(doctor -> doctor.getPatients().stream().anyMatch(patient -> patient.getId() == patientId))
                 .collect(Collectors.toList());
     }
+
     //Medications
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
@@ -155,15 +156,14 @@ public class MedicationTrackingSystem {
     public List<Medication> getMedications() {
         return medications;
     }
-    public void addPrescription(Prescription prescription) {
-        lastPrescriptionId = GenerateId(lastPrescriptionId);
-        prescription.setId(lastPrescriptionId);
-        prescriptions.add(prescription);
+    public void addMedication(Medication medication) {
+        lastMedicationId = generateId(lastMedicationId);
+        medication.setId(lastMedicationId);
+        medications.add(medication);
     }
     public void removeMedication(Medication medication) {
         medications.remove(medication);
     }
-
     public void removeMedication(int medicationId) {
         medications.removeIf(medication -> medication.getId() == medicationId);
     }
@@ -178,6 +178,8 @@ public class MedicationTrackingSystem {
                 .filter(medication -> medication.getName().toLowerCase().contains(name.toLowerCase()))
                 .collect(Collectors.toList());
     }
+
+
     //utils
     public boolean validateSystem() {
         // Assuming you have lists of IDs for patients, doctors, medications, and prescriptions
