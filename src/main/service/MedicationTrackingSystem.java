@@ -1,4 +1,5 @@
 package main.service;
+
 import main.model.Doctor;
 import main.model.Prescription;
 import main.model.Medication;
@@ -85,6 +86,17 @@ public class MedicationTrackingSystem {
     public List<Prescription> getPrescriptionsByPatient(int id) {
         Patient patient = searchPatientsById(id).get(0);
         return patient.getPrescriptions();
+    public List<Prescription> getPrescriptionsByDoctor(Doctor doctor) {
+        return patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .filter(prescription -> prescription.getDoctorId() == doctor.getId())
+                .collect(Collectors.toList());
+    }
+    public List<Prescription> getPrescriptionsByDoctorId(int id) {
+        return patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .filter(prescription -> prescription.getDoctorId() == id)
+                .collect(Collectors.toList());
     }
 
 
