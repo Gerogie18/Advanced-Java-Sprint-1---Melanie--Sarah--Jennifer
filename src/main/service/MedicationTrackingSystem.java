@@ -84,6 +84,9 @@ public class MedicationTrackingSystem {
         doctor.setId(lastDoctorId);
         doctors.add(doctor);
     }
+    public void addPatientToDoctor(Patient patient, Doctor doctor) {
+        doctor.addPatient(patient);
+    }
     public void removeDoctor(Doctor doctor) {
         doctors.remove(doctor);
     }
