@@ -74,6 +74,24 @@ public class MedicationTrackingSystem {
         prescription.setId(lastPrescriptionId);
         prescriptions.add(prescription);
     }
+    //utils
+    public boolean validateSystem() {
+        // Assuming you have lists of IDs for patients, doctors, medications, and prescriptions
+        List<String> patientIds = patients.stream().map(Patient::getId).collect(Collectors.toList());
+        List<String> doctorIds = doctors.stream().map(Doctor::getId).collect(Collectors.toList());
+        List<String> medicationIds = medications.stream().map(Medication::getId).collect(Collectors.toList());
+        List<Prescription> prescriptions = patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .collect(Collectors.toList());
+        List<String> prescriptionIds = prescriptions.stream().map(Prescription::getId).collect(Collectors.toList());
+
+        // Check for duplicates in each list
+        return !(hasDuplicates(patientIds) || hasDuplicates(doctorIds) || hasDuplicates(medicationIds) || hasDuplicates(prescriptionIds));
+    }
+    private boolean hasDuplicates(List<String> ids) {
+        return ids.size() != new HashSet<>(ids).size();
+    }
+
     private int GenerateId (int id) {
         int currentYear = LocalDate.now().getYear();
         String currentMonthStr = String.format("%02d", LocalDate.now().getMonth().getValue());
