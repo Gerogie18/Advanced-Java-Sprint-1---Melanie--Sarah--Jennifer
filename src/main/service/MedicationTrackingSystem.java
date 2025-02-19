@@ -61,6 +61,16 @@ public class MedicationTrackingSystem {
                 .filter(patient -> patient.getId() == id)
                 .collect(Collectors.toList());
     }
+    public List<Patient> searchPatientsByFirstName(String firstName) {
+        return patients.stream()
+                .filter(patient -> patient.getFirstName().toLowerCase().contains(firstName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    public List<Patient> searchPatientsByLastName(String lastName) {
+        return patients.stream()
+                .filter(patient -> patient.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
     //Doctors
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
@@ -79,6 +89,31 @@ public class MedicationTrackingSystem {
     }
     public void removeDoctor(int doctorId) {
         doctors.removeIf(doctor -> doctor.getId() == doctorId);
+    }
+    public List<Doctor> searchDoctorsId(int id) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getId() == id)
+                .collect(Collectors.toList());
+    }
+    public List<Doctor> searchDoctorsFirstName(String firstName) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getFirstName() == firstName)
+                .collect(Collectors.toList());
+    }
+    public List<Doctor> searchDoctorsByLastName(String lastName) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    public List<Doctor> searchDoctorsBySpecialty(String specialty) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getSpecialty().toLowerCase().contains(specialty.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+    public List<Doctor> searchDoctorsByPatientId(int patientId) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getPatients().stream().anyMatch(patient -> patient.getId() == patientId))
+                .collect(Collectors.toList());
     }
     //Medications
     public void setMedications(List<Medication> medications) {
@@ -99,6 +134,17 @@ public class MedicationTrackingSystem {
 
     public void removeMedication(int medicationId) {
         medications.removeIf(medication -> medication.getId() == medicationId);
+    }
+    public List<Medication> searchMedicationsById(int id) {
+        return medications.stream()
+                .filter(medication -> medication.getId() == id)
+                .collect(Collectors.toList());
+    }
+
+    public List<Medication> searchMedicationsByName(String name) {
+        return medications.stream()
+                .filter(medication -> medication.getName().toLowerCase().contains(name.toLowerCase()))
+                .collect(Collectors.toList());
     }
     //utils
     public boolean validateSystem() {
