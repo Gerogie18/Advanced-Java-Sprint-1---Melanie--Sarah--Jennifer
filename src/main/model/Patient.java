@@ -6,24 +6,31 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Patient extends Person {
+    private static int ID_OFFSET = 30000;
+    private final int patientId;
     private List<Medication> medications;
     private List<Prescription> prescriptions;
 
     // Constructor
     public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber, Medication medications, Prescription prescriptions) {
         super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
+        this.patientId = super.getId() + ID_OFFSET;
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
 
     //copyConstructor
     public Patient(Patient otherPatient) {
-        super(otherPatient);  // Call to superclass (main.model.Person) constructor
+        super(otherPatient);
+        this.patientId = super.getId() + ID_OFFSET;// Call to superclass (main.model.Person) constructor
         this.medications = otherPatient.medications;
         this.prescriptions = otherPatient.prescriptions;
     }
 
     // Getters and Setters
+    public int getPatientId() {
+        return patientId;
+    }
     public List<Medication> getMedications() {
         return medications;
     }
@@ -63,7 +70,7 @@ public class Patient extends Person {
         return prescriptions.size();
     }
 
-    // Method to get a sorted list of prescription / medication names
+//    //Method to get a sorted list of prescription / medication names
 //    public List<String> getMedicationList() {
 //        // create shallow copy of list to avoid modifying the original
 //        List<Medication> sortedMedications = new ArrayList<>(medications);
@@ -74,11 +81,11 @@ public class Patient extends Person {
 //        Comparator<Medication> byName = Comparator
 //                .comparing(Medication::getName);
 //
-//        sortedMedication.sort(byName);
+//        sortedMedications.sort(byName);
 //
 //        // Create a ArrayList to store the names
 //        List<String> MedicationList = new ArrayList<>();
-//        for (Medication medication : sortedMedication) {
+//        for (Medication medication : sortedMedications) {
 //            medicationList.add(medication.getName() + ", " + medication.getDose());
 //        }
 //        return Collections.unmodifiableList(medicationList);
