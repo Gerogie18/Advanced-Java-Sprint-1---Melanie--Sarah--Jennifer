@@ -188,6 +188,13 @@ public class MedicationTrackingSystem {
                 .collect(Collectors.toList());
     }
 
+    public void adjustMedicationInventory(Medication medication, int adjustment) {
+        int newQuantity = medication.getStockQuantity() + adjustment;
+        if (newQuantity < 0) {
+            throw new RuntimeException("Cannot adjust inventory to a negative quantity");
+        }
+        medication.setStockQuantity(newQuantity);
+    }
 
     //utils
     public boolean validateSystem() {
