@@ -50,6 +50,17 @@ public class MedicationTrackingSystem {
         patient.setId(lastPatientId);
         patients.add(patient);
     }
+    public void removePatient(Patient patient) {
+        patients.remove(patient);
+    }
+    public void removePatient(int patientId) {
+        patients.removeIf(patient-> patient.getId() == patientId);
+    }
+    public List<Patient> searchPatientsById(int id) {
+        return patients.stream()
+                .filter(patient -> patient.getId() == id)
+                .collect(Collectors.toList());
+    }
     //Doctors
     public void setDoctors(List<Doctor> doctors) {
         this.doctors = doctors;
@@ -63,6 +74,12 @@ public class MedicationTrackingSystem {
         doctor.setId(lastDoctorId);
         doctors.add(doctor);
     }
+    public void removeDoctor(Doctor doctor) {
+        doctors.remove(doctor);
+    }
+    public void removeDoctor(int doctorId) {
+        doctors.removeIf(doctor -> doctor.getId() == doctorId);
+    }
     //Medications
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
@@ -75,6 +92,13 @@ public class MedicationTrackingSystem {
         lastPrescriptionId = GenerateId(lastPrescriptionId);
         prescription.setId(lastPrescriptionId);
         prescriptions.add(prescription);
+    }
+    public void removeMedication(Medication medication) {
+        medications.remove(medication);
+    }
+
+    public void removeMedication(int medicationId) {
+        medications.removeIf(medication -> medication.getId() == medicationId);
     }
     //utils
     public boolean validateSystem() {
