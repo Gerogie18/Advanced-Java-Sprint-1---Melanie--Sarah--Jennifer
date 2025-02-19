@@ -35,7 +35,6 @@ public class MedicationTrackingSystem {
         initializeIds();
     }
 
-
     //Patients
     public void setPatients(List<Patient> patients) {
         this.patients = patients;
@@ -46,6 +45,8 @@ public class MedicationTrackingSystem {
         return patients;
     }
     public void addPatient(Patient patient) {
+        this.lastPatientId = GenerateId(lastPatientId);
+        patient.setId(lastPatientId);
         patients.add(patient);
     }
     //Doctors
@@ -55,16 +56,24 @@ public class MedicationTrackingSystem {
     public List<Doctor> getDoctors() {
         return doctors;
     }
+    public void addDoctor(Doctor doctor) {
+        this.lastDoctorId = GenerateId(lastDoctorId);
+        doctor.setId(lastDoctorId);
+        doctors.add(doctor);
+    }
     //Medications
     public void setMedications(List<Medication> medications) {
         this.medications = medications;
+        initializeLastMedicationId()
     }
     public List<Medication> getMedications() {
         return medications;
     }
-    @Override
     public void addPrescription(Prescription prescription) {
         lastPrescriptionId = GenerateId(lastPrescriptionId);
+        prescription.setId(lastPrescriptionId);
+        prescriptions.add(prescription);
+    }
     private int GenerateId (int id) {
         int currentYear = LocalDate.now().getYear();
         String currentMonthStr = String.format("%02d", LocalDate.now().getMonth().getValue());
@@ -77,7 +86,6 @@ public class MedicationTrackingSystem {
         }
     }
     private void initializeIds() {
-        this.lastDoctorId = doctors.stream()
         this.lastDoctorId = initializeLastDoctorId();
         this.lastPatientId = initializeLastPatientId();
         this.lastMedicationId = initializeLastMedicationId();
@@ -89,7 +97,6 @@ public class MedicationTrackingSystem {
                 .mapToInt(Doctor::getId)
                 .max()
                 .orElse(0);
-        this.lastPatientId = patients.stream()
     }
 
     private int initializeLastPatientId() {
@@ -97,7 +104,6 @@ public class MedicationTrackingSystem {
                 .mapToInt(Patient::getId)
                 .max()
                 .orElse(0);
-        this.lastMedicationId = medications.stream()
     }
 
     private int initializeLastMedicationId() {
@@ -105,7 +111,6 @@ public class MedicationTrackingSystem {
                 .mapToInt(Medication::getId)
                 .max()
                 .orElse(0);
-        this.lastPrescriptionId = patients.stream()
     }
 
     private int initializeLastPrescriptionId() {
