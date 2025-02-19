@@ -50,6 +50,13 @@ public class MedicationTrackingSystem {
         patient.setId(lastPatientId);
         patients.add(patient);
     }
+    public void addPrescriptionToPatient(Patient patient, Prescription prescription) {
+        patient.addPrescription(prescription);
+    }
+    public void addPrescriptionToPatient(int patientId, Prescription prescription) {
+        Patient patient = searchPatientsById(patientId).get(0);
+        patient.addPrescription(prescription);
+    }
     public void removePatient(Patient patient) {
         patients.remove(patient);
     }
