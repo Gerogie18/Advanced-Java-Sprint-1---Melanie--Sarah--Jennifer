@@ -194,6 +194,18 @@ public class MedicationTrackingSystem {
         }
         medication.setStockQuantity(newQuantity);
     }
+    public void fillPrescription(Patient patient, Prescription prescription) {
+        patient.removePrescription(prescription);
+
+        Medication medication = searchMedicationsById(prescription.getMedicationId()).get(0);
+        int newQuantity = medication.getStockQuantity() - prescription.getQuantity();
+        if (newQuantity < 0) {
+            throw new RuntimeException("Insufficient medication quantity");
+        }
+        medication.setStockQuantity(newQuantity);
+        
+        patient.addMedication(medication, prescription.getQuantity());
+    }
 
     //utils
     public boolean validateSystem() {
