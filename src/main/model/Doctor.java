@@ -7,24 +7,33 @@ import java.util.List;
 
 
 public class Doctor extends Person {
+        private static int ID_OFFSET = 4000;
+
+        private final int doctorId;
         private String specialization;
         private List<Patient> patients;
 
         // Constructor
         public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
             super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
+            this.doctorId = super.getId() + ID_OFFSET;
             this.specialization = specialization;
             this.patients = new ArrayList<>();
         }
 
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
-            super(otherDoctor);  // Call to superclass (Person) constructor
+            super(otherDoctor);
+            this.doctorId = super.getId() + ID_OFFSET;// Call to superclass (Person) constructor
             this.specialization = otherDoctor.specialization;
             this.patients = otherDoctor.patients;
         }
 
         // Getters and Setters
+        public int getDocId() {
+            return doctorId;
+        }
+
         public String getSpecialization() {
             return specialization;
         }
