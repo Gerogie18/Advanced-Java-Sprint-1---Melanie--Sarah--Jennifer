@@ -43,4 +43,26 @@ public class Medication {
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
+
+    // Method to update the stock quantity
+    public void updateQuantity(int quantityChange) {
+        this.stockQuantity += quantityChange;
+    }
+
+    // Method to check if the medication is expired
+    public boolean isExpired() {
+        return LocalDate.now().isAfter(expiryDate);
+    }
+
+    // toString method to represent the medication as a string
+    @Override
+    public String toString() {
+        return "Medication{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dose='" + dose + '\'' +
+                ", stockQuantity=" + stockQuantity +
+                ", expiryDate=" + expiryDate +
+                '}';
+    }
 }
