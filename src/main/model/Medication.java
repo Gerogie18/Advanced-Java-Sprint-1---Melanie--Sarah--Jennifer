@@ -19,5 +19,28 @@ public class Medication {
         this.expiryDate = expiryDate;
     }
 
- }
+    // Getters and Setters
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDose() {
+        return dose;
+    }
+
+    public int getStockQuantity() {
+        return stockQuantity;
+    }
+
+    public void setStockQuantity(int stockQuantity) {
+        this.stockQuantity = stockQuantity;
+    }
+
+    public LocalDate getExpiryDate() {
+        return expiryDate;
+    }
 }
