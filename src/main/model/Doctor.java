@@ -20,7 +20,13 @@ public class Doctor extends Person {
             this.specialization = specialization;
             this.patients = new ArrayList<>();
         }
-
+        
+        public Doctor(Person person, String specialization, List<Patient> patients) {
+            super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
+            this.doctorId = super.getId() + ID_OFFSET;
+            this.specialization = specialization;
+            this.patients = new ArrayList<>();
+        }
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
             super(otherDoctor);
