@@ -18,7 +18,13 @@ public class Patient extends Person {
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
-
+    
+    public Patient(Person person, Medication medications, Prescription prescriptions) {
+        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
+        this.patientId = super.getId() + ID_OFFSET;
+        this.medications = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+    }
     //copyConstructor
     public Patient(Patient otherPatient) {
         super(otherPatient);
