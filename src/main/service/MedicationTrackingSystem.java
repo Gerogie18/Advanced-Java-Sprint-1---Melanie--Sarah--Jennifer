@@ -7,19 +7,13 @@ import main.model.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Arrays;
 import java.util.HashSet;
-import java.time.LocalDate;
 
 public class MedicationTrackingSystem {
 
     private List<Patient> patients;
     private List<Medication> medications;
     private List<Doctor> doctors;
-
-    private int lastPersonId;
-    private int lastMedicationId;
-    private int lastPrescriptionId;
 
     //constructor
     public MedicationTrackingSystem() {
@@ -46,19 +40,13 @@ public class MedicationTrackingSystem {
         return patients;
     }
     public void addPatient(Patient patient) {
-        this.lastPatientId = GenerateId(lastPatientId);
-        patient.setId(lastPatientId);
         patients.add(patient);
     }
     public void addPrescriptionToPatient(Patient patient, Prescription prescription) {
-        this.lastPrescriptionId = generateId(lastPrescriptionId);
-        prescription.setId(lastPrescriptionId);
         patient.addPrescription(prescription);
     }
     public void addPrescriptionToPatient(int patientId, Prescription prescription) {
         Patient patient = searchPatientsById(patientId).get(0);
-        this.lastPrescriptionId = generateId(lastPrescriptionId);
-        prescription.setId(lastPrescriptionId);
         patient.addPrescription(prescription);
     }
     public void addPrescriptionToPatient(int patientId, Prescription prescription) {
@@ -165,8 +153,6 @@ public class MedicationTrackingSystem {
         return medications;
     }
     public void addMedication(Medication medication) {
-        lastMedicationId = generateId(lastMedicationId);
-        medication.setId(lastMedicationId);
         medications.add(medication);
     }
     public void removeMedication(Medication medication) {
@@ -225,17 +211,7 @@ public class MedicationTrackingSystem {
         return ids.size() != new HashSet<>(ids).size();
     }
 
-    private int GenerateId (int id) {
-        int currentYear = LocalDate.now().getYear();
-        String currentMonthStr = String.format("%02d", LocalDate.now().getMonth().getValue());
-        int currentMonth = Integer.parseInt(currentMonthStr);
-        int  idFormat= (currentYear * 1000000)+ (currentMonth * 1000);
-        if ((id/1000) == (idFormat/1000)) {
-            return id += 1;
-        } else {
-            return id += 1;
-        }
-    }
+
     private void initializeIds() {
         this.LastPersonID = initializeLastPersonId();
         this.lastMedicationId = initializeLastMedicationId();
