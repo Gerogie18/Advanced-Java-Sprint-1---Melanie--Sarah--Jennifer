@@ -1,5 +1,5 @@
 package main.model;
-//import main.model.Person;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,39 +7,33 @@ import java.util.List;
 
 
 public class Doctor extends Person {
-        private static int ID_OFFSET = 4000;
 
-        private final int doctorId;
         private String specialization;
         private List<Patient> patients;
 
+    public interface DoctorConstants {
+        int ID_OFFSET = 10000000;
+    }
         // Constructor
-        public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
-            super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
-            this.doctorId = super.getId() + ID_OFFSET;
-            this.specialization = specialization;
-            this.patients = new ArrayList<>();
-        }
-        
-        public Doctor(Person person, String specialization, List<Patient> patients) {
-            super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (Person) constructor
-            this.doctorId = super.getId() + ID_OFFSET;
-            this.specialization = specialization;
-            this.patients = new ArrayList<>();
-        }
+    public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
+        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET); // Call to superclass (Person) constructor
+        this.specialization = specialization;
+        this.patients = new ArrayList<>(patients);
+    }
+
+    public Doctor(Person person, String specialization, List<Patient> patients) {
+        super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
+        this.specialization = specialization;
+        this.patients = new ArrayList<>(patients);
+    }
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
-            super(otherDoctor);
-            this.doctorId = super.getId() + ID_OFFSET;// Call to superclass (Person) constructor
+            super(otherDoctor.getLastName(), otherDoctor.getFirstName(), otherDoctor.getBirthdate().toString(), otherDoctor.getPhoneNumber(), DoctorConstants.ID_OFFSET);
             this.specialization = otherDoctor.specialization;
-            this.patients = otherDoctor.patients;
+            this.patients = new ArrayList<>(otherDoctor.patients);
         }
 
         // Getters and Setters
-        public int getDocId() {
-            return doctorId;
-        }
-
         public String getSpecialization() {
             return specialization;
         }
