@@ -17,7 +17,7 @@ public class Prescription {
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
-        this.prescriptionExpiry = prescriptionExpiry;
+        this.prescriptionExpiry = LocalDate.now().plusYears(1);
     }
 
     // Getters
