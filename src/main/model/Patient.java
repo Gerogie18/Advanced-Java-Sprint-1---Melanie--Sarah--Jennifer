@@ -6,37 +6,29 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Patient extends Person {
-    private static int ID_OFFSET = 30000;
-    private final int patientId;
     private List<Medication> medications;
     private List<Prescription> prescriptions;
 
     // Constructor
     public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber, Medication medications, Prescription prescriptions) {
         super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
-        this.patientId = super.getId() + ID_OFFSET;
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
     
     public Patient(Person person, Medication medications, Prescription prescriptions) {
-        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
-        this.patientId = super.getId() + ID_OFFSET;
+        super(person);  // Call to superclass (main.model.Person) constructor
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
     //copyConstructor
     public Patient(Patient otherPatient) {
         super(otherPatient);
-        this.patientId = super.getId() + ID_OFFSET;// Call to superclass (main.model.Person) constructor
         this.medications = otherPatient.medications;
         this.prescriptions = otherPatient.prescriptions;
     }
 
     // Getters and Setters
-    public int getPatientId() {
-        return patientId;
-    }
     public List<Medication> getMedications() {
         return medications;
     }

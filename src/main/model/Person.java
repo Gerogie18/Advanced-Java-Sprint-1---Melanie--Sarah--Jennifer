@@ -5,7 +5,7 @@ import java.time.Period;
 import java.time.format.DateTimeParseException;
 
 public class Person {
-    private static int nextId = 1; // Static variable to keep track of the next ID to be assigned
+    private static int nextId = 10000001; // Static variable to keep track of the next ID to be assigned
 
     private final int id;
     private String lastName;
@@ -26,8 +26,21 @@ public class Person {
         }
         setPhoneNumber(phoneNumber);
     }
+    public Person(String lastName, String firstName, String birthdateStr, String phoneNumber, int offset) {
+        this.id = nextId + offset;
+        nextId++;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        try {
+            this.birthdate = LocalDate.parse(birthdateStr);
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Invalid birthdate format, expected YYYY-MM-DD.");
+        }
+        setPhoneNumber(phoneNumber);
+    }
     public Person(Person otherPerson) {
-        this.id = nextId++;
+        this.id = nextId;
+        nextId++;
         this.lastName = otherPerson.lastName;
         this.firstName = otherPerson.firstName;
         this.birthdate = otherPerson.birthdate;

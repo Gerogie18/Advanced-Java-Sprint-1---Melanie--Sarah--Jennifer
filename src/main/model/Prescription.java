@@ -3,22 +3,21 @@ package main.model;
 import java.time.LocalDate;
 
 public class Prescription {
-    private int id;
-    private Doctor doctor;
-    private Patient patient;
-    private Medication medication;
+    private static int nextId = 40000001; // Static variable to keep track of the next ID to be assigned
+
+    private final int id;
+    private final Doctor doctor;
+    private final Patient patient;
+    private final Medication medication;
     private LocalDate prescriptionExpiry;
-    private String dose; // Added dose field as per Sarah's sticky note
 
     // Constructor
-    public Prescription(int id, Doctor doctor, Patient patient, Medication medication, LocalDate prescriptionExpiry,
-            String dose) {
-        this.id = id;
+    public Prescription(Doctor doctor, Patient patient, Medication medication) {
+        this.id = nextId++;
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
-        this.prescriptionExpiry = prescriptionExpiry;
-        this.dose = dose;
+        this.prescriptionExpiry = LocalDate.now().plusYears(1);
     }
 
     // Getters
@@ -42,17 +41,9 @@ public class Prescription {
         return prescriptionExpiry;
     }
 
-    public String getDose() {
-        return dose;
-    }
-
     // Setters
     public void setPrescriptionExpiry(LocalDate prescriptionExpiry) {
         this.prescriptionExpiry = prescriptionExpiry;
-    }
-
-    public void setDose(String dose) {
-        this.dose = dose;
     }
 
     // toString method
@@ -64,7 +55,6 @@ public class Prescription {
                 ", patient=" + patient +
                 ", medication=" + medication +
                 ", prescriptionExpiry=" + prescriptionExpiry +
-                ", dose='" + dose + '\'' +
                 '}';
     }
 }
