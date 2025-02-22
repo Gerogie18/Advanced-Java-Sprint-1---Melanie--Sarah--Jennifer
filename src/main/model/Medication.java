@@ -3,8 +3,10 @@ package main.model;
 import java.time.LocalDate;
 
 public class Medication {
+    private static int nextId = 30000001; // Static variable to keep track of the next ID to be assigned
+
     // Attributes
-    private int id;
+    private final int id;
     private String name;
     private String dose;
     private int stockQuantity;
@@ -12,7 +14,8 @@ public class Medication {
 
     // Constructor
     public Medication(int id, String name, String dose, int stockQuantity, LocalDate expiryDate) {
-        this.id = id;
+        this.id = nextId;
+        nextId++;
         this.name = name;
         this.dose = dose;
         this.stockQuantity = stockQuantity;
