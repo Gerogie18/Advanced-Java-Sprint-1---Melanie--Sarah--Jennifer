@@ -13,6 +13,7 @@ public class Prescription {
 
     // Constructor
     public Prescription(Doctor doctor, Patient patient, Medication medication) {
+        this.id = nextId++;
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
