@@ -3,10 +3,12 @@ package main.model;
 import java.time.LocalDate;
 
 public class Prescription {
-    private int id;
-    private Doctor doctor;
-    private Patient patient;
-    private Medication medication;
+    private static int nextId = 40000001; // Static variable to keep track of the next ID to be assigned
+
+    private final int id;
+    private final Doctor doctor;
+    private final Patient patient;
+    private final Medication medication;
     private LocalDate prescriptionExpiry;
 
     // Constructor
