@@ -187,6 +187,12 @@ public class MedicationTrackingSystem {
                 .collect(Collectors.toList());
     }
     // - Print a list of all prescriptions issued by a specific doctor
+    public List<Prescription> returnPrescriptionsByDoctor(Doctor doctor) {
+        return patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .filter(prescription -> prescription.getDoctor().equals(doctor))
+                .collect(Collectors.toList());
+    }
 
 }
 
