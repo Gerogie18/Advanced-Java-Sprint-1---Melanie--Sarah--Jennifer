@@ -174,6 +174,18 @@ public class MedicationTrackingSystem {
     // Reporting and Alerts
     // ---------------------
     // - Check for expired medications
+    public List<Medication> returnExpiredMedications() {
+        return medications.stream()
+                .filter(Medication::isExpired)
+                .collect(Collectors.toList());
+    }
+    // - check for expired prescriptions
+    public List<Prescription> returnExpiredPrescriptions() {
+        return patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .filter(prescription -> prescription.isExpired())
+                .collect(Collectors.toList());
+    }
     // - Print a list of all prescriptions issued by a specific doctor
 
 }
