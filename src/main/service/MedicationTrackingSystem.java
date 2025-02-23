@@ -193,6 +193,25 @@ public class MedicationTrackingSystem {
                 .filter(prescription -> prescription.getDoctor().equals(doctor))
                 .collect(Collectors.toList());
     }
+    // - formatList
+    public <T> String formatList(List<T> list) {
+        return list.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining("\n"));
+    }
+    // - Generate a report of all system data
+    public String formatSystemData() {
+        return """
+        Patients:
+        %s
+        
+        Medications:
+        %s
+        
+        Doctors:
+        %s
+        """.formatted(formatList(patients), formatList(medications), formatList(doctors));
+    }
 
 }
 
