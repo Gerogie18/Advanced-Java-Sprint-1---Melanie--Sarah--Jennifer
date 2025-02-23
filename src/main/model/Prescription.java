@@ -46,6 +46,9 @@ public class Prescription {
         this.prescriptionExpiry = prescriptionExpiry;
     }
 
+    //bool if expired
+    public boolean isExpired () {return LocalDate.now().isAfter(prescriptionExpiry);}
+
     // toString method
     @Override
     public String toString() {
