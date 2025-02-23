@@ -11,9 +11,9 @@ import java.util.stream.Collectors;
 
 public class MedicationTrackingSystem {
 
-    private List<Patient> patients;
-    private List<Medication> medications;
-    private List<Doctor> doctors;
+    private final List<Patient> patients;
+    private final List<Medication> medications;
+    private final List<Doctor> doctors;
 
     //constructor
     public MedicationTrackingSystem() {
@@ -38,7 +38,7 @@ public class MedicationTrackingSystem {
     public void removePatient(Patient patient) {
         patients.remove(patient);
     }
-    public void removePatient(int patientId) {
+    public void removePatientById(int patientId) {
         patients.removeIf(patient -> patient.getId() == patientId);
     }
 
@@ -66,8 +66,8 @@ public class MedicationTrackingSystem {
         return patient.getPrescriptions();
     }
 
-    public List<Prescription> getPrescriptionsByPatient(int id) {
-        Patient patient = searchPatientsById(id).get(0);
+    public List<Prescription> getPrescriptionsByPatientId(int id) {
+        Patient patient = searchPatientsById(id).getFirst();
         return patient.getPrescriptions();
     }
 
@@ -83,7 +83,7 @@ public class MedicationTrackingSystem {
         doctors.remove(doctor);
     }
 
-    public void removeDoctor(int doctorId) {
+    public void removeDoctorById(int doctorId) {
         doctors.removeIf(doctor -> doctor.getId() == doctorId);
     }
 
@@ -96,7 +96,7 @@ public class MedicationTrackingSystem {
 
     public List<Doctor> searchDoctorsFirstName(String firstName) {
         return doctors.stream()
-                .filter(doctor -> doctor.getFirstName() == firstName)
+                .filter(doctor -> doctor.getFirstName().equals(firstName))
                 .collect(Collectors.toList());
     }
 
@@ -106,7 +106,7 @@ public class MedicationTrackingSystem {
                 .collect(Collectors.toList());
     }
 
-    public List<Doctor> searchDoctorsBySpecialty(String specialty) {
+    public List<Doctor> searchDoctorsBySpecialty(String specialization) {
         return doctors.stream()
                 .filter(doctor -> doctor.getSpecialization().toLowerCase().contains(specialization.toLowerCase()))
                 .collect(Collectors.toList());
@@ -125,7 +125,7 @@ public class MedicationTrackingSystem {
         medications.remove(medication);
     }
 
-    public void removeMedication(int medicationId) {
+    public void removeMedicationById(int medicationId) {
         medications.removeIf(medication -> medication.getId() == medicationId);
     }
 
@@ -142,7 +142,6 @@ public class MedicationTrackingSystem {
                 .collect(Collectors.toList());
     }
 
-    // - View medication details (including quantity and expiration date)
     // - Restock medications
     public void adjustMedicationInventory(Medication medication, int adjustment) {
         int newQuantity = medication.getStockQuantity() + adjustment;
@@ -155,23 +154,25 @@ public class MedicationTrackingSystem {
     // Prescription Management
     // ----------------------
     // - Allow doctors to prescribe medications to patients
-    // - View prescriptions for a patient
-    public List<Prescription> getPrescriptionsByPatient(Patient patient) {
-        return patient.getPrescriptions();
+    public void createPrescription(Medication medication, Patient patient, Doctor doctor) {
+        Prescription prescription = new Prescription(doctor, patient, medication);
+        patient.addPrescription(prescription);
     }
 
     public List<Prescription> getPrescriptionsByPatient(int id) {
-        Patient patient = searchPatientsById(id).get(0);
+        Patient patient = searchPatientsById(id).getFirst();
         return patient.getPrescriptions();
     }
 
     // - View prescriptions for a doctor
     public List<Prescription> getPrescriptionsByDoctor(Doctor doctor) {
-        return patients.stream();
+        return patients.stream()
+                .flatMap(patient -> patient.getPrescriptions().stream())
+                .filter(prescription -> prescription.getDoctor().equals(doctor))
+                .collect(Collectors.toList());
     }
     // Reporting and Alerts
     // ---------------------
-    // - Generate a report of all system data
     // - Check for expired medications
     // - Print a list of all prescriptions issued by a specific doctor
 
