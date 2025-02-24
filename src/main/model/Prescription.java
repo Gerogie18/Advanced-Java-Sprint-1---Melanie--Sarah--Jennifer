@@ -9,7 +9,7 @@ public class Prescription {
     private final Doctor doctor;
     private final Patient patient;
     private final Medication medication;
-    private LocalDate prescriptionExpiry;
+    private final LocalDate date;
 
     // Constructor
     public Prescription(Doctor doctor, Patient patient, Medication medication) {
@@ -17,9 +17,15 @@ public class Prescription {
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
-        this.prescriptionExpiry = LocalDate.now().plusYears(1);
+        this.date = LocalDate.now();
     }
-
+    public Prescription(Prescription other) {
+        this.id = nextId++;
+        this.doctor = other.doctor;
+        this.patient = other.patient;
+        this.medication = other.medication;
+        this.date = LocalDate.now();
+    }
     // Getters
     public int getId() {
         return id;
@@ -37,13 +43,17 @@ public class Prescription {
         return medication;
     }
 
-    public LocalDate getPrescriptionExpiry() {
-        return prescriptionExpiry;
+    public LocalDate getPrescriptionDate() {
+        return date;
     }
 
-    // Setters
-    public void setPrescriptionExpiry(LocalDate prescriptionExpiry) {
-        this.prescriptionExpiry = prescriptionExpiry;
+    public LocalDate getPrescriptionExpiry() {
+        return date.plusYears(1);
+    }
+
+
+    public boolean isExpired() {
+        return LocalDate.now().isAfter(getPrescriptionExpiry());
     }
 
     // toString method
@@ -51,10 +61,10 @@ public class Prescription {
     public String toString() {
         return "Prescription{" +
                 "id=" + id +
-                ", doctor=" + doctor +
-                ", patient=" + patient +
-                ", medication=" + medication +
-                ", prescriptionExpiry=" + prescriptionExpiry +
+                ", doctor= Dr. " + doctor.getFullName() +
+                ", patient= " + patient.getFullName() +
+                ", medication= " + medication.getName() +
+                ", prescriptionExpiry= " + date +
                 '}';
     }
 }
