@@ -26,6 +26,11 @@ public class Doctor extends Person {
         this.specialization = specialization;
         this.patients = new ArrayList<>(patients);
     }
+    public Doctor(Person person, String specialization) {
+        super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
+        this.specialization = specialization;
+        this.patients = new ArrayList<>(patients);
+    }
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
             super(otherDoctor.getLastName(), otherDoctor.getFirstName(), otherDoctor.getBirthdate().toString(), otherDoctor.getPhoneNumber(), DoctorConstants.ID_OFFSET);
