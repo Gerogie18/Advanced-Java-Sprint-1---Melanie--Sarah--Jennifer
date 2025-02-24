@@ -66,8 +66,13 @@ public class DatabasePatientService implements PatientService {
     }
 
     public List<Prescription> getPrescriptionsByPatientId(int id) {
-        Patient patient = searchPatientsById(id).getFirst();
-        return patient.getPrescriptions();
+        // Attempt to find the patient and return their prescriptions
+        Optional<Patient> verifiedPatient = getPatientById(id);
+        if (verifiedPatient.isPresent()) {
+            return verifiedPatient.get().getPrescriptions();
+        } else {
+            throw new IllegalArgumentException("Patient not found.");
+        }
     }
 
 }

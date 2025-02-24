@@ -1,6 +1,7 @@
 package main.app;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -104,15 +105,15 @@ public class PharmacyApp {
         System.out.print("New Phone Number: ");
         String phoneNumber = scanner.nextLine();
 
-        // Find the patient
-        List<Patient> patients = patientService.searchPatientsById(id);
-        if (!patients.isEmpty()) {
-            Patient patient = patients.get(0);
+        // verify the patient exists
+        Optional<Patient> verifiedPatient = patientService.getPatientById(id);
+        verifiedPatient.ifPresent(patient -> {
             patient.setFirstName(firstName);
             patient.setLastName(lastName);
             patient.setPhoneNumber(phoneNumber);
             System.out.println("Patient updated successfully.");
-        } else {
+        });
+        if (verifiedPatient.isEmpty()) {
             System.out.println("Patient not found.");
         }
     }
@@ -223,17 +224,18 @@ public class PharmacyApp {
 
 
     // - formatList
-    public <T> String formatList(List<T> list) {
+    public static <T> String formatList(List<T> list) {
         return list.stream()
                 .map(Object::toString)
                 .collect(Collectors.joining("\n"));
     }
     // - Generate a report of all system data
-    public String printPharmacyReport(Scanner scanner) {
+    public static String printPharmacyReport(Scanner scanner) {
         List<Patient> patients = patientService.getAllPatients();
         List<Medication> medications = medicationService.getAllMedications();
         List<Doctor> doctors = doctorService.getAllDoctors();
-        return """
+
+        String report = """
         Patients:
         %s
         
@@ -243,6 +245,8 @@ public class PharmacyApp {
         Doctors:
         %s
         """.formatted(formatList(patients), formatList(medications), formatList(doctors));
+        System.out.println("New patient added with id: "+ report);
+        return report;
     }
 
 }
