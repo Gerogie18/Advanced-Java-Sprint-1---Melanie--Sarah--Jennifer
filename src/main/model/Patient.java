@@ -15,6 +15,11 @@ public class Patient extends Person {
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
+    public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber) {
+        super(lastName, firstName, birthdateStr, phoneNumber);
+        this.medications = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+    }
     
     public Patient(Person person, Medication medications, Prescription prescriptions) {
         super(person);  // Call to superclass (main.model.Person) constructor
