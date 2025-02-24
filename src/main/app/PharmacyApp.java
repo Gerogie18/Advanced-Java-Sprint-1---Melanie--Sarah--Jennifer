@@ -52,7 +52,7 @@ public class PharmacyApp {
                     addDeleteEntitiesMenu(scanner);
                     break;
                 case 2:
-                    editDetailsMenu(scanner);
+                    updateDetailsMenu(scanner);
                     break;
                 case 3:
                     searchEntitiesMenu(scanner);
@@ -118,10 +118,33 @@ public class PharmacyApp {
     }
 
 
-    private static void editDetailsMenu(Scanner scanner) {
+    private static void updateDetailsMenu(Scanner scanner) {
+        boolean exit = false;
+
+        while (!exit) {
         System.out.println("1. Edit Patient");
         System.out.println("2. Edit Doctor");
         System.out.println("3. Edit Medication");
+        int option = scanner.nextInt();
+        scanner.nextLine();
+        switch (option) {
+            case 1:
+                updatePatientDetails(scanner);
+                break;
+            case 2:
+                updateDoctorDetails(scanner);
+                break;
+            case 3:
+                updateMedicationDetails(scanner);
+                break;
+            case 4:
+                exit = true;
+                System.out.println("Exiting the system...");
+                break;
+            default:
+                System.out.println("Invalid option, please choose again.");
+            }
+        }
     }
 
     private static void searchEntitiesMenu(Scanner scanner) {
@@ -143,21 +166,7 @@ public class PharmacyApp {
     }
 
 
-
-
-//    private static void addDeleteEntitiesMenu(Scanner scanner) {
-//        System.out.println("1. Add Patient");
-//        System.out.println("2. Delete Patient");
-//        System.out.println("3. Add Doctor");
-//        System.out.println("4. Delete Doctor");
-//        System.out.println("5. Add Medication");
-//        System.out.println("6. Delete Medication");
-//    }
-
-
-
-
-
+    // Add/Delete Methods
 
     private static void addAPatient(Scanner scanner) {
         System.out.println("Please enter the following information: ");
@@ -248,32 +257,131 @@ public class PharmacyApp {
     }
 
 
-    private static void updatePatientInformation(Scanner scanner) {
-        System.out.print("Enter patient ID to update: ");
+    // edit details methods
+
+    private static void updatePatientDetails(Scanner scanner) {
+        System.out.print("Enter patient ID to update (press return to skip details you do not wish to update): ");
         int id = scanner.nextInt();
         scanner.nextLine();  // Consume newline left-over
-        System.out.print("New First Name: ");
-        String firstName = scanner.nextLine();
-        System.out.print("New Last Name: ");
-        String lastName = scanner.nextLine();
-        System.out.print("New Phone Number: ");
-        String phoneNumber = scanner.nextLine();
 
-        // verify the patient exists
+        // Get existing patient details first
         Optional<Patient> verifiedPatient = patientService.getPatientById(id);
-        verifiedPatient.ifPresent(patient -> {
-            patient.setFirstName(firstName);
-            patient.setLastName(lastName);
-            patient.setPhoneNumber(phoneNumber);
-            System.out.println("Patient updated successfully.");
-        });
         if (verifiedPatient.isEmpty()) {
             System.out.println("Patient not found.");
+            return; // Exit if no patient found
         }
+
+        Patient patient = verifiedPatient.get();
+
+        // Prompt for first name and check if the user wants to update it
+        System.out.print("New First Name: ");
+        String firstName = scanner.nextLine();
+        if (!firstName.isEmpty()) {
+            patient.setFirstName(firstName);
+        }
+
+        // Prompt for last name and check if the user wants to update it
+        System.out.print("New Last Name: ");
+        String lastName = scanner.nextLine();
+        if (!lastName.isEmpty()) {
+            patient.setLastName(lastName);
+        }
+
+        // Prompt for phone number and check if the user wants to update it
+        System.out.print("New Phone Number: ");
+        String phoneNumber = scanner.nextLine();
+        if (!phoneNumber.isEmpty()) {
+            patient.setPhoneNumber(phoneNumber);
+        }
+
+        System.out.println("Patient information updated successfully.");
+    }
+
+    private static void updateDoctorDetails(Scanner scanner) {
+        System.out.print("Enter Doctor ID to update (press return to skip details you do not wish to update): ");
+        int id = scanner.nextInt();
+        scanner.nextLine();  // Consume newline left-over
+
+        // Get existing doctor details first
+        Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(id);
+        if (verifiedDoctor.isEmpty()) {
+            System.out.println("Doctor not found.");
+            return; // Exit if no doctor found
+        }
+
+        Doctor doctor = verifiedDoctor.get();
+
+        // Prompt for first name and check if the user wants to update it
+        System.out.print("New First Name: ");
+        String firstName = scanner.nextLine();
+        if (!firstName.isEmpty()) {
+            doctor.setFirstName(firstName);
+        }
+
+        // Prompt for last name and check if the user wants to update it
+        System.out.print("New Last Name: ");
+        String lastName = scanner.nextLine();
+        if (!lastName.isEmpty()) {
+            doctor.setLastName(lastName);
+        }
+
+        // Prompt for phone number and check if the user wants to update it
+        System.out.print("New Phone Number: ");
+        String phoneNumber = scanner.nextLine();
+        if (!phoneNumber.isEmpty()) {
+            doctor.setPhoneNumber(phoneNumber);
+        }
+
+        // Prompt for phone number and check if the user wants to update it
+        System.out.print("New Speciality: ");
+        String speciality = scanner.nextLine();
+        if (!speciality.isEmpty()) {
+            doctor.setSpecialization(speciality);
+        }
+        
+        System.out.println("Doctor information updated successfully.");
     }
 
 
+    private static void updateMedicationDetails(Scanner scanner) {
+        System.out.print("Enter Medication ID to update (press return to skip details you do not wish to update): ");
+        int id = scanner.nextInt();
+        scanner.nextLine();  // Consume newline left-over
 
+        // Get existing doctor details first
+        Optional<Medication> verifiedMedication = medicationService.getMedicationById(id);
+        if (verifiedMedication.isEmpty()) {
+            System.out.println("Medication not found.");
+            return; // Exit if no medication found
+        }
+
+        Medication medication = verifiedMedication.get();
+
+        // Prompt for first name and check if the user wants to update it
+        System.out.print("New Medication Name: ");
+        String name = scanner.nextLine();
+        if (!name.isEmpty()) {
+            medication.setName(name);
+        }
+
+        // Prompt for last name and check if the user wants to update it
+        System.out.print("New Dose: ");
+        String dose = scanner.nextLine();
+        if (!dose.isEmpty()) {
+            medication.setDose(dose);
+        }
+
+//        // Prompt for phone number and check if the user wants to update it
+//        System.out.print("New Expiry Date: ");
+//        String expDate = scanner.nextLine();
+//        if (!expDate.isEmpty()) {
+//            medication.setExpiryDate(LocalDate.parse(expDate));
+//        }
+
+        System.out.println("Medication information updated successfully.");
+    }
+    
+    
     private static void printAllScriptsForPatientByName(Scanner scanner) {
 //        String firstName;
 //        String lastName;
