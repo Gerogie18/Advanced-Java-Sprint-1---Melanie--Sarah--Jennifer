@@ -9,6 +9,7 @@ public interface DoctorService {
         void removeDoctor(Doctor doctor);
         void removeDoctorById(int doctorId);
         void addPatientToDoctor(Patient patient, Doctor doctor);
+        List<Doctor> getAllDoctors();
         List<Doctor> searchDoctorsById(int doctorId);
         List<Doctor> searchDoctorsByFirstName(String firstName);
         List<Doctor> searchDoctorsByLastName(String lastName);

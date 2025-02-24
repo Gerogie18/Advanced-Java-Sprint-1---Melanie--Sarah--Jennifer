@@ -1,13 +1,11 @@
 package main.service;
 
-//import main.model.Doctor;
-//import main.model.Medication;
-import main.model.Doctor;
 import main.model.Patient;
 import main.model.Prescription;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DatabasePatientService implements PatientService {
@@ -39,11 +37,16 @@ public class DatabasePatientService implements PatientService {
     }
 
     // - Search for patients by name or ID
-    public List<Patient> searchPatientsById(int id) {
+    public Optional<Patient> getPatientById(int id) {
         return patients.stream()
                 .filter(patient -> patient.getId() == id)
-                .collect(Collectors.toList());
+                .findFirst();
     }
+//    public List<Patient> searchPatientsById(int id) {
+//        return patients.stream()
+//                .filter(patient -> patient.getId() == id)
+//                .collect(Collectors.toList());
+//    }
 
     public List<Patient> searchPatientsByFirstName(String firstName) {
         return patients.stream()

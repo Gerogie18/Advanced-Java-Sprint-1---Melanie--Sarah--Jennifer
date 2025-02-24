@@ -5,6 +5,7 @@ import main.model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DatabaseMedicationService implements MedicationService {
@@ -48,10 +49,10 @@ public class DatabaseMedicationService implements MedicationService {
 
 
     // - Search for medications by name or ID
-    public List<Medication> searchMedicationsById(int id) {
+    public Optional<Medication> getMedicationById(int id) {
         return medications.stream()
                 .filter(medication -> medication.getId() == id)
-                .collect(Collectors.toList());
+                .findFirst();
     }
 
     public List<Medication> searchMedicationsByName(String name) {
@@ -75,6 +76,14 @@ public class DatabaseMedicationService implements MedicationService {
     public List<Prescription> getAllPrescriptions() {
         return prescriptions;
     }
+
+    public Optional<Prescription> getPrescriptionById(int id) {
+        return prescriptions.stream()
+                .filter(prescription -> prescription.getId() == id)
+                .findFirst();
+    }
+
+
     // - Allow doctors to prescribe medications to patients
     public Prescription createPrescription (Doctor doctor,  Patient patient, Medication medication) {
         if (doctor == null || patient == null || medication == null) {
