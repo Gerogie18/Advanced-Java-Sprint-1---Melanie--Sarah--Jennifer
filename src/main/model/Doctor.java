@@ -30,6 +30,7 @@ public class Doctor extends Person {
         this.patients = new ArrayList<>();
         this.isTakingPatients = true;
     }
+
     public Doctor(Person person, String specialization, List<Patient> patients) {
         super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
         this.specialization = specialization;
