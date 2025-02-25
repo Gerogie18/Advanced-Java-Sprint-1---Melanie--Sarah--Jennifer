@@ -20,6 +20,7 @@ import main.service.DatabasePatientService;
 import main.service.DatabaseDoctorService;
 import main.service.DatabaseMedicationService;
 
+
 public class PharmacyApp {
     // Declare service references using the interface types
     private static PatientService patientService;
@@ -187,8 +188,9 @@ public class PharmacyApp {
 
             System.out.println("1. Accept Prescription");
             System.out.println("2. Assign Patient to Doctor");
-            System.out.println("3. Restock Medications");
-            System.out.println("4: Exit");
+            System.out.println("3. Renew Prescription");
+            System.out.println("4. Restock Medications");
+            System.out.println("5: Exit");
             System.out.print("What would you like to do? ");
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -200,9 +202,12 @@ public class PharmacyApp {
                     assignPatientToDoctor(scanner);
                     break;
                 case 3:
-                    restockPharmacyDrug(scanner);
+                    renewPrescription(scanner);
                     break;
                 case 4:
+                    restockPharmacyDrug(scanner);
+                    break;
+                case 5:
                     exit = true;
                     System.out.println("Exiting the system...");
                     break;
