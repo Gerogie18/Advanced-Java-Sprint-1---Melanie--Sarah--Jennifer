@@ -14,6 +14,7 @@ public class MedicalSystemApp {
         Doctor doctor = new Doctor("Doe", "Terry", "1980-01-01", "709-555-0101", "Cardiology");
         Patient patient = new Patient("Smith", "Sam", "1990-02-15", "709-555-0202");
         Medication medication = new Medication("Amoxicillin", "500mg", 20, LocalDate.now().plusDays(30));
+        String instruction = "twice daily";
 
         DatabaseMedicationService medicationService = new DatabaseMedicationService();
         DatabasePatientService patientService = new DatabasePatientService();
@@ -25,7 +26,7 @@ public class MedicalSystemApp {
         List<Prescription> prescriptions = medicationService.getAllPrescriptions();
 
 
-        Prescription newPrescription = medicationService.createPrescription(doctor, patient, medication);
+        Prescription newPrescription = medicationService.createPrescription(doctor, patient, medication, instruction);
         List<Medication> expiredMeds = medicationService.getExpiredMedications();
 
         // Displaying prescriptions by a doctor

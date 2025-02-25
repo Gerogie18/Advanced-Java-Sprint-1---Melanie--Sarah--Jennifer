@@ -14,12 +14,14 @@ public interface MedicationService {
     void updateMedication(Medication medication, String newName, String newDose);
     Optional<Medication> getMedicationById(int id);
     void adjustMedicationInventory(Medication medication, int adjustment);
-
+    void restockAllMedications(List<Medication> medications, int max);
 
     // Prescription Management
     Prescription createPrescription(Doctor doctor, Patient patient, Medication medication, String instructions);
-    Prescription renewPrescription(Prescription prescription, int dose, String instructions);
+    Prescription updatePrescription(Prescription prescription, String dose, String instructions);
+    Prescription renewPrescription(Prescription prescription);
     Optional<Prescription> getPrescriptionById(int id);
+
 
 
     // Reporting and Alerts

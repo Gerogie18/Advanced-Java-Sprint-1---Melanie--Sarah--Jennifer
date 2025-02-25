@@ -460,10 +460,13 @@ public class PharmacyApp {
 
     // Methods for Search Menu
     public static void searchPatient(Scanner scanner) {
+        System.out.println("Functionality not yet implemented.");
     }
     public static void searchDoctor(Scanner scanner) {
+        System.out.println("Functionality not yet implemented.");
     }
     public static void searchMedication(Scanner scanner) {
+        System.out.println("Functionality not yet implemented.");
     }
 
     
@@ -559,25 +562,21 @@ public class PharmacyApp {
     }
 
     private static void renewPrescription(Scanner scanner) {
-        System.out.print("Enter Prescription ID: ");
-        int id = scanner.nextInt();
-        scanner.nextLine();  // Consume newline left-over
-
-        Optional<Prescription> verifiedPrescription = medicationService.getPrescriptionById(id);
-        if (verifiedPrescription.isEmpty()) {
-            System.out.println("Prescription not found.");
-            return; // Exit if no prescription found
-        }
-
-        Prescription prescription = verifiedPrescription.get();
-
-//        System.out.println("Current number in stock: " + prescription.getStockQuantity());
-//        System.out.println("How much are we adding?: ");
-//        int adjustment = scanner.nextInt();
+//        System.out.print("Enter Prescription ID: ");
+//        int id = scanner.nextInt();
 //        scanner.nextLine();  // Consume newline left-over
 //
-//        medicationService.renewPrescription(prescription, adjustment, );
-//        System.out.println("New stock quantity: " + prescription.getStockQuantity());
+//        Optional<Prescription> verifiedPrescription = medicationService.getPrescriptionById(id);
+//        if (verifiedPrescription.isEmpty()) {
+//            System.out.println("Prescription not found.");
+//            return; // Exit if no prescription found
+//        }
+//
+//        Prescription prescription = verifiedPrescription.get();
+//
+
+
+        System.out.println("Functionality not yet implemented.");
     }
 
     private static void restockPharmacyDrug(Scanner scanner) {

@@ -91,18 +91,22 @@ public class DatabaseMedicationService implements MedicationService {
         }
         Prescription prescription = new Prescription(doctor, patient, medication, instructions);
 
-
         prescriptions.add(prescription);
         patient.addPrescription(prescription);
         return prescription;
     }
 
-    public Prescription renewPrescription(Prescription prescription, String newDose, String instructions) {
+    public Prescription updatePrescription(Prescription prescription, String newDose, String instructions) {
         Prescription newPrescription = new Prescription(prescription);
         newPrescription.getMedication().setDose(newDose);
         newPrescription.setInstructions(instructions);
         return newPrescription;
     }
+
+    public Prescription renewPrescription(Prescription prescription) {
+        return new Prescription(prescription);
+    }
+
 
     // - View prescriptions for a doctor
     public List<Prescription> getPrescriptionsByDoctor(Doctor doctor) {
@@ -134,7 +138,7 @@ public class DatabaseMedicationService implements MedicationService {
 //    }
 
 
-    public static void restockAllMedications(List<Medication> medications, int max) {
+    public void restockAllMedications(List<Medication> medications, int max) {
         for (Medication medication : medications) {
             medication.setStockQuantity(max); //
         }
