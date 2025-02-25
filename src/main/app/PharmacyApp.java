@@ -465,6 +465,9 @@ public class PharmacyApp {
 
     // Methods for Search Menu
     public static void searchPatient(Scanner scanner) {
+
+
+
         System.out.println("Functionality not yet implemented.");
     }
     public static void searchDoctor(Scanner scanner) {

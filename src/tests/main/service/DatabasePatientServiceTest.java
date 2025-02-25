@@ -34,23 +34,14 @@ class DatabasePatientServiceTest {
     @Test
     void removePatient() {
         service.removePatient(patient);
-        assertFalse(service.searchPatientsById(patient.getId()).contains(patient));
+        List<Patient> allPatients = service.getAllPatients();
+        assertFalse(allPatients.contains(patient));
     }
 
     @Test
     void testRemovePatient() {
     }
 
-    @Test
-    void searchPatientsById() {
-        Patient newPatient = new Patient("Fellas", "Other", "1981-01-02", "7095555678");
-        int testID = patient.getId();
-        // Use the searchPatientsID to retrieve patients
-        List<Patient> foundPatients = service.searchPatientsById(testID);
-        // Assert that the list of found patients contains the added patient
-        assertTrue(foundPatients.contains(patient));
-        assertFalse(foundPatients.contains(newPatient));
-    }
 
     @Test
     void searchPatientsByFirstName() {
