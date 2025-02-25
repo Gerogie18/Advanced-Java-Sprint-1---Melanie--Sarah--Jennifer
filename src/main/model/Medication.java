@@ -10,10 +10,10 @@ public class Medication {
     private String name;
     private String dose;
     private int stockQuantity;
-    private LocalDate expiryDate;
+    private final LocalDate expiryDate;
 
     // Constructor
-    public Medication(int id, String name, String dose, int stockQuantity, LocalDate expiryDate) {
+    public Medication(String name, String dose, int stockQuantity, LocalDate expiryDate) {
         this.id = nextId;
         nextId++;
         this.name = name;
@@ -30,11 +30,15 @@ public class Medication {
     public String getName() {
         return name;
     }
-
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getDose() {
         return dose;
     }
-
+    public void setDose(String dose) {
+        this.dose = dose;
+    }
     public int getStockQuantity() {
         return stockQuantity;
     }

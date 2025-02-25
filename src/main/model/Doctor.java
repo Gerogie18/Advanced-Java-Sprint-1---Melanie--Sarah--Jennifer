@@ -10,6 +10,8 @@ public class Doctor extends Person {
 
         private String specialization;
         private List<Patient> patients;
+        private Boolean isTakingPatients;
+
 
     public interface DoctorConstants {
         int ID_OFFSET = 10000000;
@@ -19,12 +21,21 @@ public class Doctor extends Person {
         super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET); // Call to superclass (Person) constructor
         this.specialization = specialization;
         this.patients = new ArrayList<>(patients);
+        this.isTakingPatients = true;
+    }
+
+    public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization) {
+        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET); // Call to superclass (Person) constructor
+        this.specialization = specialization;
+        this.patients = new ArrayList<>();
+        this.isTakingPatients = true;
     }
 
     public Doctor(Person person, String specialization, List<Patient> patients) {
         super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
         this.specialization = specialization;
         this.patients = new ArrayList<>(patients);
+        this.isTakingPatients = true;
     }
     public Doctor(Person person, String specialization) {
         super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
@@ -36,6 +47,7 @@ public class Doctor extends Person {
             super(otherDoctor.getLastName(), otherDoctor.getFirstName(), otherDoctor.getBirthdate().toString(), otherDoctor.getPhoneNumber(), DoctorConstants.ID_OFFSET);
             this.specialization = otherDoctor.specialization;
             this.patients = new ArrayList<>(otherDoctor.patients);
+            this.isTakingPatients = true;
         }
 
         // Getters and Setters
@@ -46,7 +58,16 @@ public class Doctor extends Person {
         public void setSpecialization(String specialization) {
             this.specialization = specialization;
         }
-        // return a viewable list of patients but prevents the list from being changed
+
+        public Boolean canAcceptPatients() {
+            return isTakingPatients;
+        }
+
+        public void setTakingPatients(Boolean takingPatients) {
+            this.isTakingPatients = takingPatients;
+        }
+
+    // return a viewable list of patients but prevents the list from being changed
         public List<Patient> getPatients() {
             return Collections.unmodifiableList(patients);
         }

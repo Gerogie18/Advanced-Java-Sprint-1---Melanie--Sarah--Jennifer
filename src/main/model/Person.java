@@ -103,6 +103,10 @@ public class Person {
         return elapsedTime.getYears();
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     // toString method
     @Override
     public String toString() {

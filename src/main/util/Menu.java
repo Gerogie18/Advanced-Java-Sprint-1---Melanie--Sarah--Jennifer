@@ -1,11 +1,12 @@
 package main.util;//package medicationsystem;
 import main.model.Patient;
+import main.model.Person;
 
 import java.util.Scanner;
 
 public class Menu {
     public static void main(String[] args) {
-       // main.service.MedicationSystem medicationTracking = new MedicationTracking();
+       //main.service.MedicationSystem medicationTracking = new MedicationTracking();
         boolean exit = false;
 
         while (!exit){
@@ -110,15 +111,11 @@ public class Menu {
         System.out.print("Phone Number ((999) 999-9999): ");
         String phoneNumber = scanner.nextLine();
 
-        System.out.print("Medications: ");
-        String medications = scanner.nextLine();
 
-        System.out.print("Prescriptions: ");
-        String prescriptions = scanner.nextLine();
+        Patient patient = new Patient(firstName, lastName, birthdateStr, phoneNumber);
 
-        Patient patient = new Patient(firstName, lastName, birthdateStr, phoneNumber, medications, prescriptions);
+        System.out.println(patient.getId());
 
-        System.out.println(patient);
 
     }
 
