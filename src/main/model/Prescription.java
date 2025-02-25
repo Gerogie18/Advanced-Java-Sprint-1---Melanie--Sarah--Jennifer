@@ -70,9 +70,6 @@ public class Prescription {
         return LocalDate.now().isAfter(getPrescriptionExpiry());
     }
 
-    //bool if expired
-    public boolean isExpired () {return LocalDate.now().isAfter(prescriptionExpiry);}
-
     // toString method
     @Override
     public String toString() {

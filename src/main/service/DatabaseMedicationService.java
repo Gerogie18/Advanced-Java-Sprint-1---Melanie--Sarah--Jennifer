@@ -20,6 +20,10 @@ public class DatabaseMedicationService implements MedicationService {
             this.prescriptions = new ArrayList<>(prescriptions);
     }
 
+    public DatabaseMedicationService(List<Medication> medications) {
+        this.medications = new ArrayList<>(medications);
+        this.prescriptions = new ArrayList<>();
+    }
 
     public List<Medication> getAllMedications() {
         return medications;
