@@ -19,6 +19,9 @@ import main.service.MedicationService;
 import main.service.DatabasePatientService;
 import main.service.DatabaseDoctorService;
 import main.service.DatabaseMedicationService;
+import main.util.TestingDataGenerator;
+
+
 
 
 public class PharmacyApp {
@@ -27,16 +30,27 @@ public class PharmacyApp {
     private static DoctorService doctorService;
     private static MedicationService medicationService;
 
+
+
     public static void main(String[] args) {
         // Initialize services using their concrete implementations
-        patientService = new DatabasePatientService();
-        doctorService = new DatabaseDoctorService();
-        medicationService = new DatabaseMedicationService();
+        TestingDataGenerator dataGenerator = new TestingDataGenerator();
 
+        // Initialize services with generated test data
+        patientService = new DatabasePatientService(dataGenerator.getPatients());
+        doctorService = new DatabaseDoctorService(dataGenerator.getDoctors());
+        medicationService = new DatabaseMedicationService(dataGenerator.getMedications());
+
+        runApplication();
+    }
+
+
+
+    private static void runApplication() {
+        Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
         while (!exit){
-            Scanner scanner = new Scanner(System.in);
             System.out.println("=====Welcome To The Pharmacy Med Tracking System=====");
             System.out.println("Main Menu Options: ");
             System.out.println("1: Add/Delete a patient, doctor, or medication");
