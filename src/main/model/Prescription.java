@@ -10,13 +10,15 @@ public class Prescription {
     private final Patient patient;
     private final Medication medication;
     private final LocalDate date;
+    private String instructions;
 
     // Constructor
-    public Prescription(Doctor doctor, Patient patient, Medication medication) {
+    public Prescription(Doctor doctor, Patient patient, Medication medication, String instructions) {
         this.id = nextId++;
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
+        this.instructions = instructions;
         this.date = LocalDate.now();
     }
     public Prescription(Prescription other) {
@@ -24,6 +26,7 @@ public class Prescription {
         this.doctor = other.doctor;
         this.patient = other.patient;
         this.medication = other.medication;
+        this.instructions = other.instructions;
         this.date = LocalDate.now();
     }
     // Getters
@@ -43,6 +46,10 @@ public class Prescription {
         return medication;
     }
 
+    public String getInstructions() {
+        return instructions;
+    }
+
     public LocalDate getPrescriptionDate() {
         return date;
     }
@@ -52,6 +59,13 @@ public class Prescription {
     }
 
 
+    // Setters
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+
+    // Methods
     public boolean isExpired() {
         return LocalDate.now().isAfter(getPrescriptionExpiry());
     }
@@ -63,7 +77,8 @@ public class Prescription {
                 "id=" + id +
                 ", doctor= Dr. " + doctor.getFullName() +
                 ", patient= " + patient.getFullName() +
-                ", medication= " + medication.getName() +
+                ", medication= " + medication.getName() + " " + medication.getDose() +
+                ", instructions= " + this.instructions +
                 ", prescriptionExpiry= " + date +
                 '}';
     }

@@ -6,6 +6,7 @@ import main.model.Prescription;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class DatabaseDoctorService implements DoctorService {
@@ -23,6 +24,11 @@ public class DatabaseDoctorService implements DoctorService {
         return doctors;
     }
 
+    public Optional<Doctor> getDoctorById(int id) {
+        return doctors.stream()
+                .filter(doctor -> doctor.getId() == id)
+                .findFirst();
+    }
     public void addDoctor(Doctor doctor) {
         doctors.add(doctor);
     }

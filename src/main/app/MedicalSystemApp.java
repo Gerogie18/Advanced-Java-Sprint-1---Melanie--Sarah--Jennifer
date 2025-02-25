@@ -13,7 +13,7 @@ public class MedicalSystemApp {
         // Setup services and dependencies
         Doctor doctor = new Doctor("Doe", "Terry", "1980-01-01", "709-555-0101", "Cardiology");
         Patient patient = new Patient("Smith", "Sam", "1990-02-15", "709-555-0202");
-        Medication medication = new Medication(1, "Amoxicillin", "500mg", 20, LocalDate.now().plusDays(30));
+        Medication medication = new Medication("Amoxicillin", "500mg", 20, LocalDate.now().plusDays(30));
 
         DatabaseMedicationService medicationService = new DatabaseMedicationService();
         DatabasePatientService patientService = new DatabasePatientService();

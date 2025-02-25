@@ -85,11 +85,11 @@ public class DatabaseMedicationService implements MedicationService {
 
 
     // - Allow doctors to prescribe medications to patients
-    public Prescription createPrescription (Doctor doctor,  Patient patient, Medication medication) {
-        if (doctor == null || patient == null || medication == null) {
-            throw new IllegalArgumentException("Doctor, patient, and medication must not be null");
+    public Prescription createPrescription (Doctor doctor,  Patient patient, Medication medication, String instructions) {
+        if (doctor == null || patient == null || medication == null || instructions == null) {
+            throw new IllegalArgumentException("Doctor, patient, medication, and label instructions must not be null");
         }
-        Prescription prescription = new Prescription(doctor, patient, medication);
+        Prescription prescription = new Prescription(doctor, patient, medication, instructions);
 
 
         prescriptions.add(prescription);
@@ -97,9 +97,10 @@ public class DatabaseMedicationService implements MedicationService {
         return prescription;
     }
 
-    public Prescription renewPrescription(Prescription prescription, String newDose) {
+    public Prescription renewPrescription(Prescription prescription, String newDose, String instructions) {
         Prescription newPrescription = new Prescription(prescription);
         newPrescription.getMedication().setDose(newDose);
+        newPrescription.setInstructions(instructions);
         return newPrescription;
     }
 
@@ -131,5 +132,12 @@ public class DatabaseMedicationService implements MedicationService {
 //                .filter(prescription -> prescription.getDoctor().equals(doctor))
 //                .collect(Collectors.toList());
 //    }
+
+
+    public static void restockAllMedications(List<Medication> medications, int max) {
+        for (Medication medication : medications) {
+            medication.setStockQuantity(max); //
+        }
+    }
 
 }
