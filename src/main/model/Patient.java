@@ -10,22 +10,18 @@ public class Patient extends Person {
     private List<Medication> medications;
     private List<Prescription> prescriptions;
 
-    // Constructor
+    // Constructors
     public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber, List<Medication> medications, List<Prescription> prescriptions) {
-        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
+        super(lastName, firstName, birthdateStr, phoneNumber);
         this.medications = medications;
         this.prescriptions = prescriptions;
     }
     public Patient(String lastName, String firstName, String birthdateStr, String phoneNumber) {
-        super(lastName, firstName, birthdateStr, phoneNumber);  // Call to superclass (main.model.Person) constructor
+        super(lastName, firstName, birthdateStr, phoneNumber);
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
-    public Patient(Person person, Medication medications, Prescription prescriptions) {
-        super(person);  // Call to superclass (main.model.Person) constructor
-        this.medications = new ArrayList<>();
-        this.prescriptions = new ArrayList<>();
-    }
+
     //copyConstructor
     public Patient(Patient otherPatient) {
         super(otherPatient);
@@ -37,18 +33,10 @@ public class Patient extends Person {
     public List<Medication> getMedications() {
         return medications;
     }
-
-    public void setMedications(List<Medication> medications) {
-        this.medications = medications;
-    }
-
     public List<Prescription> getPrescriptions() {
         return prescriptions;
     }
 
-//    public void setPrescriptions(String prescriptions) {
-//        this.prescriptions = prescriptions;
-//    }
 
     // Methods to manipulate the medication and prescription list
     public void addMedication(Medication medication) {
@@ -65,12 +53,6 @@ public class Patient extends Person {
     }
     public void clearPrescriptions() {
         this.prescriptions = new ArrayList<>();
-    }
-
-
-
-    public int getNumberOfPrescriptions() {
-        return prescriptions.size();
     }
 
 
@@ -107,10 +89,12 @@ public class Patient extends Person {
     }
 
 
-
     // toString method
     @Override
     public String toString() {
-        return super.toString() + ", Medications: " + getMedicationList() + ", Prescriptions: " + getPrescriptionList();
+        return super.toString();
     }
+//    public String toString() {
+//        return super.toString() + ", Medications: " + getMedicationList() + ", Prescriptions: " + getPrescriptionList();
+//    }
 }

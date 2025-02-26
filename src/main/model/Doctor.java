@@ -10,7 +10,7 @@ public class Doctor extends Person {
 
         private String specialization;
         private List<Patient> patients;
-        private Boolean isTakingPatients;
+        private boolean isTakingPatients;
 
 
     public interface DoctorConstants {
@@ -18,30 +18,20 @@ public class Doctor extends Person {
     }
         // Constructor
     public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
-        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET); // Call to superclass (Person) constructor
+        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET);
         this.specialization = specialization;
         this.patients = new ArrayList<>(patients);
         this.isTakingPatients = true;
     }
 
     public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization) {
-        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET); // Call to superclass (Person) constructor
+        super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET);
         this.specialization = specialization;
         this.patients = new ArrayList<>();
         this.isTakingPatients = true;
     }
 
-    public Doctor(Person person, String specialization, List<Patient> patients) {
-        super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
-        this.specialization = specialization;
-        this.patients = new ArrayList<>(patients);
-        this.isTakingPatients = true;
-    }
-    public Doctor(Person person, String specialization) {
-        super(person.getLastName(), person.getFirstName(), person.getBirthdate().toString(), person.getPhoneNumber(), DoctorConstants.ID_OFFSET);
-        this.specialization = specialization;
-        this.patients = new ArrayList<>(patients);
-    }
+
         //copyConstructor
         public Doctor(Doctor otherDoctor) {
             super(otherDoctor.getLastName(), otherDoctor.getFirstName(), otherDoctor.getBirthdate().toString(), otherDoctor.getPhoneNumber(), DoctorConstants.ID_OFFSET);
@@ -59,18 +49,18 @@ public class Doctor extends Person {
             this.specialization = specialization;
         }
 
-        public Boolean canAcceptPatients() {
+        public boolean canAcceptPatients() {
             return isTakingPatients;
         }
 
-        public void setTakingPatients(Boolean takingPatients) {
+        public void setIsTakingPatients(boolean takingPatients) {
             this.isTakingPatients = takingPatients;
         }
 
-    // return a viewable list of patients but prevents the list from being changed
         public List<Patient> getPatients() {
             return Collections.unmodifiableList(patients);
         }
+
 
         // Methods to manipulate the patients list
         public void addPatient(Patient patient) {
@@ -94,9 +84,6 @@ public class Doctor extends Person {
             // create shallow copy of list to avoid modifying the original
             List<Patient> sortedPatients = new ArrayList<>(patients);
 
-            // Sort the new list based on the last name
-            // Note Patient::getFirstName === (Patient p) -> p.getFirstName().
-            // This is sensitive to case
             Comparator<Patient> byLastNameThenFirstName = Comparator
                     .comparing(Patient::getLastName)
                     .thenComparing(Patient::getFirstName);
@@ -111,7 +98,6 @@ public class Doctor extends Person {
             return Collections.unmodifiableList(patientList);
         }
 
-        // toString method
         @Override
         public String toString() {
             return super.toString() + ", specialization: " + specialization + ", patients: " + getPatientList();
