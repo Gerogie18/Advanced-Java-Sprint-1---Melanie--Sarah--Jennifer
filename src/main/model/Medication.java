@@ -5,8 +5,7 @@ import java.time.LocalDate;
 public class Medication {
     private static int nextId = 30000001; // Static variable to keep track of the next ID to be assigned
 
-    // Attributes
-    private final int id;
+    private final int MEDICATION_ID;
     private String name;
     private String dose;
     private int stockQuantity;
@@ -14,7 +13,7 @@ public class Medication {
 
     // Constructor
     public Medication(String name, String dose, int stockQuantity, LocalDate expiryDate) {
-        this.id = nextId;
+        this.MEDICATION_ID = nextId;
         nextId++;
         this.name = name;
         this.dose = dose;
@@ -22,11 +21,11 @@ public class Medication {
         this.expiryDate = expiryDate;
     }
 
+
     // Getters and Setters
     public int getId() {
-        return id;
+        return MEDICATION_ID;
     }
-
     public String getName() {
         return name;
     }
@@ -65,7 +64,7 @@ public class Medication {
     @Override
     public String toString() {
         return "Medication{" +
-                "id=" + id +
+                "id=" + MEDICATION_ID +
                 ", name='" + name + '\'' +
                 ", dose='" + dose + '\'' +
                 ", stockQuantity=" + stockQuantity +

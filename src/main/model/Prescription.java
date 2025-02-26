@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Prescription {
     private static int nextId = 40000001; // Static variable to keep track of the next ID to be assigned
 
-    private final int id;
+    private final int PRESCRIPTION_ID;
     private final Doctor doctor;
     private final Patient patient;
     private final Medication medication;
@@ -14,7 +14,7 @@ public class Prescription {
 
     // Constructor
     public Prescription(Doctor doctor, Patient patient, Medication medication, String instructions) {
-        this.id = nextId++;
+        this.PRESCRIPTION_ID = nextId++;
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
@@ -22,7 +22,7 @@ public class Prescription {
         this.date = LocalDate.now();
     }
     public Prescription(Prescription other) {
-        this.id = nextId++;
+        this.PRESCRIPTION_ID = nextId++;
         this.doctor = other.doctor;
         this.patient = other.patient;
         this.medication = other.medication;
@@ -31,7 +31,7 @@ public class Prescription {
     }
     // Getters
     public int getId() {
-        return id;
+        return PRESCRIPTION_ID;
     }
 
     public Doctor getDoctor() {
@@ -74,11 +74,11 @@ public class Prescription {
     @Override
     public String toString() {
         return "Prescription{" +
-                "id=" + id +
+                "id=" + PRESCRIPTION_ID +
                 ", doctor= Dr. " + doctor.getFullName() +
                 ", patient= " + patient.getFullName() +
                 ", medication= " + medication.getName() + " " + medication.getDose() +
-                ", instructions= " + this.instructions +
+                ", instructions= " + instructions +
                 ", prescriptionExpiry= " + date +
                 '}';
     }
