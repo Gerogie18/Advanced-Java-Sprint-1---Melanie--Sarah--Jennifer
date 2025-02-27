@@ -13,7 +13,8 @@ public class DatabaseDoctorService implements DoctorService {
     private List<Doctor> doctors;
 
     public DatabaseDoctorService() {
-        this.doctors = new ArrayList<>();;
+        this.doctors = new ArrayList<>();
+        ;
     }
 
     public DatabaseDoctorService(List<Doctor> doctors) {
@@ -29,6 +30,7 @@ public class DatabaseDoctorService implements DoctorService {
                 .filter(doctor -> doctor.getId() == id)
                 .findFirst();
     }
+
     public void addDoctor(Doctor doctor) {
         doctors.add(doctor);
     }
@@ -41,7 +43,7 @@ public class DatabaseDoctorService implements DoctorService {
         doctors.removeIf(doctor -> doctor.getId() == doctorId);
     }
 
-    //Add patients to doctor's list
+    // Add patients to doctor's list
     public void addPatientToDoctor(Patient patient, Doctor doctor) {
         if (doctor.canAcceptPatients()) {
             doctor.addPatient(patient);
@@ -66,6 +68,14 @@ public class DatabaseDoctorService implements DoctorService {
     public List<Doctor> searchDoctorsByLastName(String lastName) {
         return doctors.stream()
                 .filter(doctor -> doctor.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getFilterdList(String firstName, String lastName) {
+        return doctors.stream()
+                .filter(Patient -> Patient.getFirstName().equalsIgnoreCase(firstName)
+                        || Patient.getLastName().equalsIgnoreCase(lastName))
+                .map(doctor -> doctor.toString() + " ID: " + doctor.getId()) // Append ID to the toString result
                 .collect(Collectors.toList());
     }
 

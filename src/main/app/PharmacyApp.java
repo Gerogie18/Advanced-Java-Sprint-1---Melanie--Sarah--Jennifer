@@ -132,6 +132,7 @@ public class PharmacyApp {
                     exit = true;
                     System.out.println("");
                     System.out.println("Exiting the system...");
+                    System.out.println("Good bye");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
@@ -149,7 +150,7 @@ public class PharmacyApp {
             System.out.println("1. Edit Patient");
             System.out.println("2. Edit Doctor");
             System.out.println("3. Edit Medication");
-            System.out.println("4: Exit");
+            System.out.println("4: Return to main menu");
             System.out.println("");
             System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
@@ -186,7 +187,7 @@ public class PharmacyApp {
             System.out.println("1. Search Patient");
             System.out.println("2. Search Doctor");
             System.out.println("3. Search Medication");
-            System.out.println("4: Exit");
+            System.out.println("4: Return to main menu");
             System.out.println("");
             System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
@@ -224,7 +225,7 @@ public class PharmacyApp {
             System.out.println("2. Assign Patient to Doctor");
             System.out.println("3. Renew Prescription");
             System.out.println("4. Restock Medications");
-            System.out.println("5: Exit");
+            System.out.println("5: Return to main menu");
             System.out.println("");
             System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
@@ -264,7 +265,7 @@ public class PharmacyApp {
             System.out.println("1. Generate Full System Report");
             System.out.println("2. Check for Expired Medications");
             System.out.println("3. Print Prescriptions for a Doctor");
-            System.out.println("4: Exit");
+            System.out.println("4: Return to main menu");
             System.out.println("");
             System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
@@ -549,8 +550,13 @@ public class PharmacyApp {
 
     public static void searchDoctor(Scanner scanner) {
         System.out.println("");
-        System.out.println("Functionality not yet implemented.");
+        System.out.print("First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = scanner.nextLine();
         System.out.println("");
+        List<String> filteredList = doctorService.getFilterdList(firstName, lastName);
+        System.out.println(filteredList);
     }
 
     public static void searchMedication(Scanner scanner) {

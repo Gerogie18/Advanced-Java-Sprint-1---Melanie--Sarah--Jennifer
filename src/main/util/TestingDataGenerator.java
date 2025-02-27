@@ -72,14 +72,14 @@ public class TestingDataGenerator {
         List<Medication> medications = new ArrayList<>();
         medications.add(new Medication("Paracetamol", "500mg", 50, LocalDate.of(2026, 5, 10)));
         medications.add(new Medication("Ibuprofen", "200mg", 30, LocalDate.of(2025, 8, 15)));
-        medications.add(new Medication( "Amoxicillin", "250mg", 20, LocalDate.of(2024, 11, 30)));
-        medications.add(new Medication( "Cetirizine", "10mg", 40, LocalDate.of(2026, 1, 20)));
-        medications.add(new Medication( "Metformin", "500mg", 25, LocalDate.of(2023, 12, 10)));
-        medications.add(new Medication( "Aspirin", "75mg", 60, LocalDate.of(2025, 4, 5)));
-        medications.add(new Medication( "Lisinopril", "10mg", 35, LocalDate.of(2024, 7, 18)));
-        medications.add(new Medication( "Losartan", "50mg", 45, LocalDate.of(2025, 12, 30)));
-        medications.add(new Medication( "Atorvastatin", "20mg", 55, LocalDate.of(2026, 3, 25)));
-        medications.add(new Medication( "Omeprazole", "20mg", 15, LocalDate.of(2024, 9, 5)));
+        medications.add(new Medication("Amoxicillin", "250mg", 20, LocalDate.of(2024, 11, 30)));
+        medications.add(new Medication("Cetirizine", "10mg", 40, LocalDate.of(2026, 1, 20)));
+        medications.add(new Medication("Metformin", "500mg", 25, LocalDate.of(2023, 12, 10)));
+        medications.add(new Medication("Aspirin", "75mg", 60, LocalDate.of(2025, 4, 5)));
+        medications.add(new Medication("Lisinopril", "10mg", 35, LocalDate.of(2024, 7, 18)));
+        medications.add(new Medication("Losartan", "50mg", 45, LocalDate.of(2025, 12, 30)));
+        medications.add(new Medication("Atorvastatin", "20mg", 55, LocalDate.of(2026, 3, 25)));
+        medications.add(new Medication("Omeprazole", "20mg", 15, LocalDate.of(2024, 9, 5)));
         return medications;
     }
 
