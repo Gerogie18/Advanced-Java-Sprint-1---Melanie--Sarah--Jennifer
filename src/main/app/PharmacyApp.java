@@ -49,6 +49,7 @@ public class PharmacyApp {
             System.out.println("=====Welcome To The Pharmacy Med Tracking System=====");
             System.out.println("");
             System.out.println("Main Menu Options: ");
+            System.out.println("");
             System.out.println("1: Add/Delete a patient, doctor, or medication");
             System.out.println("2: Edit details for a patient, doctor, or medication");
             System.out.println("3: Search");
@@ -56,7 +57,7 @@ public class PharmacyApp {
             System.out.println("5: Generate Reports");
             System.out.println("6: Exit");
             System.out.println("");
-            System.out.print("What would you like to do? ");
+            System.out.print("Please choose an option: ");
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -78,10 +79,12 @@ public class PharmacyApp {
                     break;
                 case 6:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
             }
         }
     }
@@ -92,6 +95,7 @@ public class PharmacyApp {
 
         while (!exit) {
             System.out.println("");
+            System.out.println("Add/Delete Menu Options: ");
             System.out.println("1. Add Patient");
             System.out.println("2. Delete Patient");
             System.out.println("3. Add Doctor");
@@ -100,7 +104,7 @@ public class PharmacyApp {
             System.out.println("6. Delete Medication");
             System.out.println("7: Exit");
             System.out.println("");
-            System.out.print("What would you like to do? ");
+            System.out.print("Please choose an option: ");
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -125,10 +129,12 @@ public class PharmacyApp {
                     break;
                 case 7:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
             }
         }
     }
@@ -137,11 +143,14 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println("");
+            System.out.println("Edit Details Menu Options: ");
             System.out.println("1. Edit Patient");
             System.out.println("2. Edit Doctor");
             System.out.println("3. Edit Medication");
             System.out.println("4: Exit");
             System.out.println("");
+            System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
             scanner.nextLine();
             switch (option) {
@@ -156,11 +165,13 @@ public class PharmacyApp {
                     break;
                 case 4:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     System.out.println("");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
             }
         }
     }
@@ -169,12 +180,14 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println("");
+            System.out.println("Search Menu Options: ");
             System.out.println("1. Search Patient");
             System.out.println("2. Search Doctor");
             System.out.println("3. Search Medication");
             System.out.println("4: Exit");
             System.out.println("");
-            System.out.print("What would you like to do? ");
+            System.out.print("Please choose an option: ");
             int option = scanner.nextInt();
             scanner.nextLine();
             switch (option) {
@@ -189,11 +202,13 @@ public class PharmacyApp {
                     break;
                 case 4:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     System.out.println("");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
             }
         }
     }
@@ -202,14 +217,15 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
-
+            System.out.println("");
+            System.out.println("Prescription Management Menu Options: ");
             System.out.println("1. Accept Prescription");
             System.out.println("2. Assign Patient to Doctor");
             System.out.println("3. Renew Prescription");
             System.out.println("4. Restock Medications");
             System.out.println("5: Exit");
             System.out.println("");
-            System.out.print("What would you like to do? ");
+            System.out.print("Please choose an option: ");
             System.out.println("");
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -228,11 +244,13 @@ public class PharmacyApp {
                     break;
                 case 5:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     System.out.println("");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
             }
         }
     }
@@ -241,12 +259,14 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println("");
+            System.out.println("Report Menu Options: ");
             System.out.println("1. Generate Full System Report");
             System.out.println("2. Check for Expired Medications");
             System.out.println("3. Print Prescriptions for a Doctor");
             System.out.println("4: Exit");
             System.out.println("");
-            System.out.print("What would you like to do? ");
+            System.out.print("Please choose an option: ");
             System.out.println("");
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -262,11 +282,13 @@ public class PharmacyApp {
                     break;
                 case 4:
                     exit = true;
+                    System.out.println("");
                     System.out.println("Exiting the system...");
                     System.out.println("");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
+                    System.out.println("");
 
             }
         }
@@ -275,6 +297,7 @@ public class PharmacyApp {
     // Add/Delete Methods
 
     private static void addAPatient(Scanner scanner) {
+        System.out.println("");
         System.out.println("Please enter the following information: ");
         System.out.println("");
         System.out.print("First Name: ");
@@ -302,6 +325,7 @@ public class PharmacyApp {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
         patientService.removePatient(id);
+        System.out.println("");
         System.out.println("Patient deleted successfully.");
         System.out.println("");
     }
@@ -326,6 +350,7 @@ public class PharmacyApp {
 
         Doctor doctor = new Doctor(lastName, firstName, birthdateStr, phoneNumber, speciality);
         doctorService.addDoctor(doctor);
+        System.out.println("");
         System.out.println("New doctor added with id: " + doctor.getId());
         System.out.println("");
     }
@@ -335,6 +360,7 @@ public class PharmacyApp {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
         doctorService.removeDoctorById(id);
+        System.out.println("");
         System.out.println("Doctor deleted successfully.");
         System.out.println("");
     }
@@ -363,6 +389,7 @@ public class PharmacyApp {
 
         Medication medication = new Medication(name, dose, stockQty, expDate);
         medicationService.addMedication(medication);
+        System.out.println("");
         System.out.println("New medication added with id: " + medication.getId());
         System.out.println("");
     }
@@ -372,6 +399,7 @@ public class PharmacyApp {
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
         medicationService.removeMedicationById(id);
+        System.out.println("");
         System.out.println("Medication deleted successfully.");
         System.out.println("");
     }
@@ -379,13 +407,16 @@ public class PharmacyApp {
     // edit details methods
 
     private static void updatePatientDetails(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter patient ID to update (press return to skip details you do not wish to update): ");
+        System.out.println("");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         // Get existing patient details first
         Optional<Patient> verifiedPatient = patientService.getPatientById(id);
         if (verifiedPatient.isEmpty()) {
+            System.out.println("");
             System.out.println("Patient not found.");
             System.out.println("");
             return; // Exit if no patient found
@@ -413,12 +444,13 @@ public class PharmacyApp {
         if (!phoneNumber.isEmpty()) {
             patient.setPhoneNumber(phoneNumber);
         }
-
+        System.out.println("");
         System.out.println("Patient information updated successfully.");
         System.out.println("");
     }
 
     private static void updateDoctorDetails(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Doctor ID to update (press return to skip details you do not wish to update): ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -426,6 +458,7 @@ public class PharmacyApp {
         // Get existing doctor details first
         Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(id);
         if (verifiedDoctor.isEmpty()) {
+            System.out.println("");
             System.out.println("Doctor not found.");
             System.out.println("");
             return; // Exit if no doctor found
@@ -460,12 +493,13 @@ public class PharmacyApp {
         if (!specialization.isEmpty()) {
             doctor.setSpecialization(specialization);
         }
-
+        System.out.println("");
         System.out.println("Doctor information updated successfully.");
         System.out.println("");
     }
 
     private static void updateMedicationDetails(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Medication ID to update (press return to skip details you do not wish to update): ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -473,6 +507,7 @@ public class PharmacyApp {
         // Get existing medication details first
         Optional<Medication> verifiedMedication = medicationService.getMedicationById(id);
         if (verifiedMedication.isEmpty()) {
+            System.out.println("");
             System.out.println("Medication not found.");
             System.out.println("");
             return; // Exit if no medication found
@@ -493,24 +528,26 @@ public class PharmacyApp {
         if (!dose.isEmpty()) {
             medication.setDose(dose);
         }
-
+        System.out.println("");
         System.out.println("Medication information updated successfully.");
         System.out.println("");
     }
 
     // Methods for Search Menu
     public static void searchPatient(Scanner scanner) {
-
+        System.out.println("");
         System.out.println("Functionality not yet implemented.");
         System.out.println("");
     }
 
     public static void searchDoctor(Scanner scanner) {
+        System.out.println("");
         System.out.println("Functionality not yet implemented.");
         System.out.println("");
     }
 
     public static void searchMedication(Scanner scanner) {
+        System.out.println("");
         System.out.println("Functionality not yet implemented.");
         System.out.println("");
     }
@@ -520,12 +557,14 @@ public class PharmacyApp {
     public static void acceptPrescription(Scanner scanner) {
 
         // Get Doctor
+        System.out.println("");
         System.out.print("Enter Doctor ID: ");
         int doctorId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(doctorId);
         if (verifiedDoctor.isEmpty()) {
+            System.out.println("");
             System.out.println("Doctor not found.");
             System.out.println("");
             return; // Exit if no doctor found
@@ -534,12 +573,14 @@ public class PharmacyApp {
         Doctor doctor = verifiedDoctor.get();
 
         // Get Patient
+        System.out.println("");
         System.out.print("Enter Patient ID: ");
         int patientId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Patient> verifiedPatient = patientService.getPatientById(patientId);
         if (verifiedPatient.isEmpty()) {
+            System.out.println("");
             System.out.println("Patient not found.");
             System.out.println("");
             return; // Exit if no patient found
@@ -548,12 +589,14 @@ public class PharmacyApp {
         Patient patient = verifiedPatient.get();
 
         // Get Medication
+        System.out.println("");
         System.out.print("Enter Medication ID: ");
         int medicationId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Medication> verifiedMedication = medicationService.getMedicationById(medicationId);
         if (verifiedMedication.isEmpty()) {
+            System.out.println("");
             System.out.println("Medication not found.");
             System.out.println("");
             return; // Exit if no medication found
@@ -571,7 +614,7 @@ public class PharmacyApp {
     }
 
     public static void assignPatientToDoctor(Scanner scanner) {
-
+        System.out.println("");
         System.out.print("Enter Doctor ID: ");
         int doctorId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -579,6 +622,7 @@ public class PharmacyApp {
         // Get existing doctor details first
         Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(doctorId);
         if (verifiedDoctor.isEmpty()) {
+            System.out.println("");
             System.out.println("Doctor not found.");
             System.out.println("");
             return; // Exit if no doctor found
@@ -593,6 +637,7 @@ public class PharmacyApp {
         // Get existing patient details first
         Optional<Patient> verifiedPatient = patientService.getPatientById(patientId);
         if (verifiedPatient.isEmpty()) {
+            System.out.println("");
             System.out.println("Patient not found.");
             System.out.println("");
             return; // Exit if no patient found
@@ -601,6 +646,7 @@ public class PharmacyApp {
         Patient patient = verifiedPatient.get();
 
         doctorService.addPatientToDoctor(patient, doctor);
+        System.out.println("");
         System.out.println("Patient information updated successfully.");
         System.out.println("");
 
@@ -620,30 +666,35 @@ public class PharmacyApp {
         //
         // Prescription prescription = verifiedPrescription.get();
         //
-
+        System.out.println("");
         System.out.println("Functionality not yet implemented.");
         System.out.println("");
     }
 
     private static void restockPharmacyDrug(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Medication ID: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Medication> verifiedMedication = medicationService.getMedicationById(id);
         if (verifiedMedication.isEmpty()) {
+            System.out.println("");
             System.out.println("Medication not found.");
             System.out.println("");
             return; // Exit if no medication found
         }
 
         Medication medication = verifiedMedication.get();
+        System.out.println("");
         System.out.println("Current number in stock: " + medication.getStockQuantity());
+        System.out.println("");
         System.out.println("Amount to be added: ");
         int adjustment = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         medicationService.adjustMedicationInventory(medication, adjustment);
+        System.out.println("");
         System.out.println("New stock quantity: " + medication.getStockQuantity());
         System.out.println("");
     }
@@ -655,11 +706,13 @@ public class PharmacyApp {
                 Expired Medications:
                 %s
                 """.formatted(CustomUtil.formatList(expiredMedications));
+        System.out.println("");
         System.out.println(report);
         System.out.println("");
     }
 
     private static void printScriptsForDoctorList(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Doctor ID: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -667,6 +720,7 @@ public class PharmacyApp {
         // Get existing doctor details first
         Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(id);
         if (verifiedDoctor.isEmpty()) {
+            System.out.println("");
             System.out.println("Doctor not found.");
             System.out.println("");
             return; // Exit if no doctor found
@@ -680,6 +734,7 @@ public class PharmacyApp {
                 Scripts by %s:
                 %s
                 """.formatted(doctor.getFullName(), CustomUtil.formatList(doctorScripts));
+        System.out.println("");
         System.out.println(report);
 
         System.out.println("scriptList");
@@ -700,7 +755,7 @@ public class PharmacyApp {
         // List<Patient> patients = service.searchPatientsByLastName(lastName);
         // List<Prescription> scriptList = service.getPrescriptionsByPatient(Patient
         // patients[0]);
-
+        System.out.println("");
         System.out.println("scriptList");
         System.out.println("");
 
@@ -723,6 +778,7 @@ public class PharmacyApp {
                 %s
                 """.formatted(CustomUtil.formatList(patients), CustomUtil.formatList(medications),
                 CustomUtil.formatList(doctors));
+        System.out.println("");
         System.out.println(report);
         System.out.println("");
     }
@@ -730,12 +786,14 @@ public class PharmacyApp {
     // consider using helper methods:
 
     public static Optional<Patient> getPatient(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Patient ID: ");
         int patientId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Patient> verifiedPatient = patientService.getPatientById(patientId);
         if (verifiedPatient.isEmpty()) {
+            System.out.println("");
             System.out.println("Patient not found.");
             System.out.println("");
             return Optional.empty(); // Return an empty Optional to signify not found
@@ -745,12 +803,14 @@ public class PharmacyApp {
     }
 
     public static Optional<Doctor> getDoctor(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Doctor ID: ");
         int doctorId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Doctor> verifiedDoctor = doctorService.getDoctorById(doctorId);
         if (verifiedDoctor.isEmpty()) {
+            System.out.println("");
             System.out.println("Doctor not found.");
             System.out.println("");
             return Optional.empty(); // Return an empty Optional to signify not found
@@ -760,17 +820,19 @@ public class PharmacyApp {
     }
 
     public static Optional<Medication> getMedication(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter Medication ID: ");
         int medicationId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
         Optional<Medication> verifiedMedication = medicationService.getMedicationById(medicationId);
         if (verifiedMedication.isEmpty()) {
+            System.out.println("");
             System.out.println("Medication not found.");
             System.out.println("");
             return Optional.empty(); // Return an empty Optional to signify not found
         }
-
+        System.out.println("");
         return verifiedMedication; // Return the found medication wrapped in Optional
     }
 
