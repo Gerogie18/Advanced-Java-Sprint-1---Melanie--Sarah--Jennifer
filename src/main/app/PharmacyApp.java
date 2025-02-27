@@ -1,6 +1,8 @@
 package main.app;
 
 import main.util.CustomUtil;
+
+import java.nio.file.DirectoryStream.Filter;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +22,6 @@ import main.service.DatabasePatientService;
 import main.service.DatabaseDoctorService;
 import main.service.DatabaseMedicationService;
 import main.util.TestingDataGenerator;
-import java.time.format.DateTimeFormatter;
 
 public class PharmacyApp {
     // Declare service references using the interface types
@@ -378,8 +379,7 @@ public class PharmacyApp {
         String dateString = scanner.nextLine();
         LocalDate expDate;
         if (dateString.length() == 7) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM");
-            expDate = LocalDate.parse(dateString + "-01", formatter);
+            expDate = LocalDate.parse(dateString + "-01");
         } else {
             expDate = LocalDate.parse(dateString);
         }
@@ -538,8 +538,13 @@ public class PharmacyApp {
     // Methods for Search Menu
     public static void searchPatient(Scanner scanner) {
         System.out.println("");
-        System.out.println("Functionality not yet implemented.");
+        System.out.print("First Name: ");
+        String firstName = scanner.nextLine();
+        System.out.print("Last Name: ");
+        String lastName = scanner.nextLine();
         System.out.println("");
+        List<String> filteredList = patientService.getFilterdList(firstName, lastName);
+        System.out.println(filteredList);
     }
 
     public static void searchDoctor(Scanner scanner) {

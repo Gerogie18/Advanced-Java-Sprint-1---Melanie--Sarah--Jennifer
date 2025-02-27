@@ -11,18 +11,21 @@ import java.util.stream.Collectors;
 public class DatabasePatientService implements PatientService {
     private List<Patient> patients;
 
-    //constructor
+    // constructor
     public DatabasePatientService() {
         this.patients = new ArrayList<>();
     }
+
     public DatabasePatientService(List<Patient> patients) {
         this.patients = patients;
     }
+
     // Patient Management
     // -------------------
     public List<Patient> getAllPatients() {
         return patients;
     }
+
     // - Add patients to the system
     public void addPatient(Patient patient) {
         patients.add(patient);
@@ -32,6 +35,7 @@ public class DatabasePatientService implements PatientService {
     public void removePatient(Patient patient) {
         patients.remove(patient);
     }
+
     public void removePatient(int patientId) {
         patients.removeIf(patient -> patient.getId() == patientId);
     }
@@ -42,11 +46,11 @@ public class DatabasePatientService implements PatientService {
                 .filter(patient -> patient.getId() == id)
                 .findFirst();
     }
-//    public List<Patient> searchPatientsById(int id) {
-//        return patients.stream()
-//                .filter(patient -> patient.getId() == id)
-//                .collect(Collectors.toList());
-//    }
+    // public List<Patient> searchPatientsById(int id) {
+    // return patients.stream()
+    // .filter(patient -> patient.getId() == id)
+    // .collect(Collectors.toList());
+    // }
 
     public List<Patient> searchPatientsByFirstName(String firstName) {
         return patients.stream()
@@ -57,6 +61,14 @@ public class DatabasePatientService implements PatientService {
     public List<Patient> searchPatientsByLastName(String lastName) {
         return patients.stream()
                 .filter(patient -> patient.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    public List<String> getFilterdList(String firstName, String lastName) {
+        return patients.stream()
+                .filter(Patient -> Patient.getFirstName().equalsIgnoreCase(firstName)
+                        || Patient.getLastName().equalsIgnoreCase(lastName))
+                .map(patient -> patient.toString() + " ID: " + patient.getId()) // Append ID to the toString result
                 .collect(Collectors.toList());
     }
 
