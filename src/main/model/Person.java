@@ -1,8 +1,9 @@
 package main.model;
+import main.util.CustomUtils;
 
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.format.DateTimeParseException;
+
 
 public class Person {
     private static int nextId = 10000001; // Static variable to keep track of the next ID to be assigned
@@ -77,30 +78,10 @@ public class Person {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (!isValidPhoneNumber(phoneNumber)) {
+        if (!CustomUtils.isValidPhoneNumber(phoneNumber)) {
             throw new IllegalArgumentException("Invalid phone number. Must be 10 digits long.");
         }
-        this.phoneNumber = formatPhoneNumber(phoneNumber);
-    }
-
-    private boolean isValidPhoneNumber(String phoneNumber) {
-        String digits = phoneNumber.replaceAll("\\D+", "");
-        return digits.length() == 10;
-    }
-
-    private String formatPhoneNumber(String phoneNumber) {
-        String digits = phoneNumber.replaceAll("\\D+", "");
-        return String.format("(%s) %s-%s",
-                digits.substring(0, 3),
-                digits.substring(3, 6),
-                digits.substring(6, 10));
-    }
-
-
-    public int calculateAge(LocalDate birthdate) {
-        // Calculate the period between the birthdate and today
-        Period elapsedTime = Period.between(birthdate, LocalDate.now());
-        return elapsedTime.getYears();
+        this.phoneNumber = CustomUtils.formatPhoneNumber(phoneNumber);
     }
 
     public String getFullName() {
@@ -113,7 +94,7 @@ public class Person {
         return String.format("%s %s (%d years old), %s",
                 firstName,
                 lastName,
-                calculateAge(birthdate),
+                CustomUtils.calculateAge(birthdate),
                 phoneNumber);
     }
 }
