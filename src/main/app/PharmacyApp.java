@@ -45,6 +45,7 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println("");
             System.out.println("=====Welcome To The Pharmacy Med Tracking System=====");
             System.out.println("");
             System.out.println("Main Menu Options: ");
@@ -56,7 +57,6 @@ public class PharmacyApp {
             System.out.println("6: Exit");
             System.out.println("");
             System.out.print("What would you like to do? ");
-            System.out.println("");
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -91,6 +91,7 @@ public class PharmacyApp {
         boolean exit = false;
 
         while (!exit) {
+            System.out.println("");
             System.out.println("1. Add Patient");
             System.out.println("2. Delete Patient");
             System.out.println("3. Add Doctor");
@@ -100,7 +101,6 @@ public class PharmacyApp {
             System.out.println("7: Exit");
             System.out.println("");
             System.out.print("What would you like to do? ");
-            System.out.println("");
 
             int option = scanner.nextInt();
             scanner.nextLine();
@@ -291,11 +291,13 @@ public class PharmacyApp {
 
         Patient patient = new Patient(lastName, firstName, birthdateStr, phoneNumber);
         patientService.addPatient(patient);
+        System.out.println("");
         System.out.println("New patient added with id: " + patient.getId());
         System.out.println("");
     }
 
     private static void deleteAPatient(Scanner scanner) {
+        System.out.println("");
         System.out.print("Enter patient ID to delete: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -305,7 +307,7 @@ public class PharmacyApp {
     }
 
     private static void addADoctor(Scanner scanner) {
-        scanner.nextLine();
+        System.out.println("");
         System.out.println("Please enter the following information: ");
         System.out.print("First Name: ");
         String firstName = scanner.nextLine();
