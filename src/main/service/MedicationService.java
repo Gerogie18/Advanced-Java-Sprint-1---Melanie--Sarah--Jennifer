@@ -23,7 +23,6 @@ public interface MedicationService {
     Optional<Prescription> getPrescriptionById(int id);
 
 
-
     // Reporting and Alerts
     List<Medication> getAllMedications();
     List<Medication> getExpiredMedications();
@@ -32,6 +31,4 @@ public interface MedicationService {
     List<Prescription> getAllPrescriptions();
     List<Prescription> getExpiredPrescriptions();
     List<Prescription> getPrescriptionsByDoctor(Doctor doctor);
-
-
 }

@@ -16,8 +16,6 @@ public interface DoctorService {
         List<Doctor> searchDoctorsByLastName(String lastName);
         List<Doctor> searchDoctorsBySpeciality(String specialization);
         Optional<Doctor> getDoctorById(int id);
-        //List<Prescription> getPrescriptionsByDoctorId(int doctorId);
-
     }
 
 
