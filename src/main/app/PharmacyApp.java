@@ -226,7 +226,6 @@ public class PharmacyApp {
             System.out.println("5: Exit");
             System.out.println("");
             System.out.print("Please choose an option: ");
-            System.out.println("");
             int option = scanner.nextInt();
             scanner.nextLine();
             switch (option) {
@@ -299,7 +298,6 @@ public class PharmacyApp {
     private static void addAPatient(Scanner scanner) {
         System.out.println("");
         System.out.println("Please enter the following information: ");
-        System.out.println("");
         System.out.print("First Name: ");
         String firstName = scanner.nextLine();
 
@@ -408,8 +406,8 @@ public class PharmacyApp {
 
     private static void updatePatientDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter patient ID to update (press return to skip details you do not wish to update): ");
-        System.out.println("");
+        System.out.print("Enter Patient ID to update: ");
+        System.out.println("Press Enter to skip updating a field.");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -451,7 +449,8 @@ public class PharmacyApp {
 
     private static void updateDoctorDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter Doctor ID to update (press return to skip details you do not wish to update): ");
+        System.out.print("Enter Doctor ID to update: ");
+        System.out.println("Press Enter to skip updating a field.");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -500,7 +499,8 @@ public class PharmacyApp {
 
     private static void updateMedicationDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter Medication ID to update (press return to skip details you do not wish to update): ");
+        System.out.print("Enter Medication ID to update: ");
+        System.out.println("Press Enter to skip updating a field.");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -573,7 +573,6 @@ public class PharmacyApp {
         Doctor doctor = verifiedDoctor.get();
 
         // Get Patient
-        System.out.println("");
         System.out.print("Enter Patient ID: ");
         int patientId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
@@ -589,7 +588,6 @@ public class PharmacyApp {
         Patient patient = verifiedPatient.get();
 
         // Get Medication
-        System.out.println("");
         System.out.print("Enter Medication ID: ");
         int medicationId = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
