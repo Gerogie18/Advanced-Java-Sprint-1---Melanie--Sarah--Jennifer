@@ -16,6 +16,7 @@ public class Doctor extends Person {
     public interface DoctorConstants {
         int ID_OFFSET = 10000000;
     }
+
         // Constructor
     public Doctor(String lastName, String firstName, String birthdateStr, String phoneNumber, String specialization, List<Patient> patients) {
         super(lastName, firstName, birthdateStr, phoneNumber, DoctorConstants.ID_OFFSET);

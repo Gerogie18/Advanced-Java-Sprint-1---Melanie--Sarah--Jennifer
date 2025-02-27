@@ -19,22 +19,17 @@ public class DatabaseMedicationService implements MedicationService {
             this.medications = new ArrayList<>(medications);
             this.prescriptions = new ArrayList<>(prescriptions);
     }
-
     public DatabaseMedicationService(List<Medication> medications) {
         this.medications = new ArrayList<>(medications);
         this.prescriptions = new ArrayList<>();
     }
-
     public List<Medication> getAllMedications() {
         return medications;
     }
-
-
     // - Add medications to the system
     public void addMedication(Medication medication) {
         medications.add(medication);
     }
-
     // - Remove medications from the system
     public void removeMedication(Medication medication) {
         medications.remove(medication);
