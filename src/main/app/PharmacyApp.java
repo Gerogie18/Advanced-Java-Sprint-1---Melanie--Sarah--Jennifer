@@ -561,8 +561,10 @@ public class PharmacyApp {
 
     public static void searchMedication(Scanner scanner) {
         System.out.println("");
-        System.out.println("Functionality not yet implemented.");
+        System.out.print("Name: ");
         System.out.println("");
+        List<String> filteredList = medicationService.getFilterdList(name);
+        System.out.println(filteredList);
     }
 
     // Methods for Prescription Management Menu

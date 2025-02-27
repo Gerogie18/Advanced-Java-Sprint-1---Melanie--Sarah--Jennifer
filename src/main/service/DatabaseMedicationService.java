@@ -1,4 +1,5 @@
 package main.service;
+
 import main.model.*;
 
 import java.util.ArrayList;
@@ -10,26 +11,31 @@ public class DatabaseMedicationService implements MedicationService {
     private List<Medication> medications;
     private List<Prescription> prescriptions;
 
-    //constructor
+    // constructor
     public DatabaseMedicationService() {
         this.medications = new ArrayList<>();
         this.prescriptions = new ArrayList<>();
     }
+
     public DatabaseMedicationService(List<Medication> medications, List<Prescription> prescriptions) {
-            this.medications = new ArrayList<>(medications);
-            this.prescriptions = new ArrayList<>(prescriptions);
+        this.medications = new ArrayList<>(medications);
+        this.prescriptions = new ArrayList<>(prescriptions);
     }
+
     public DatabaseMedicationService(List<Medication> medications) {
         this.medications = new ArrayList<>(medications);
         this.prescriptions = new ArrayList<>();
     }
+
     public List<Medication> getAllMedications() {
         return medications;
     }
+
     // - Add medications to the system
     public void addMedication(Medication medication) {
         medications.add(medication);
     }
+
     // - Remove medications from the system
     public void removeMedication(Medication medication) {
         medications.remove(medication);
@@ -43,7 +49,6 @@ public class DatabaseMedicationService implements MedicationService {
         medication.setName(newName);
         medication.setDose(newDose);
     }
-
 
     // - Search for medications by name or ID
     public Optional<Medication> getMedicationById(int id) {
@@ -80,9 +85,8 @@ public class DatabaseMedicationService implements MedicationService {
                 .findFirst();
     }
 
-
     // - Allow doctors to prescribe medications to patients
-    public Prescription createPrescription (Doctor doctor,  Patient patient, Medication medication, String instructions) {
+    public Prescription createPrescription(Doctor doctor, Patient patient, Medication medication, String instructions) {
         if (doctor == null || patient == null || medication == null || instructions == null) {
             throw new IllegalArgumentException("Doctor, patient, medication, and label instructions must not be null");
         }
@@ -104,7 +108,6 @@ public class DatabaseMedicationService implements MedicationService {
         return new Prescription(prescription);
     }
 
-
     // - View prescriptions for a doctor
     public List<Prescription> getPrescriptionsByDoctor(Doctor doctor) {
         return prescriptions.stream()
@@ -120,6 +123,7 @@ public class DatabaseMedicationService implements MedicationService {
                 .filter(Medication::isExpired)
                 .collect(Collectors.toList());
     }
+
     // - check for expired prescriptions
     public List<Prescription> getExpiredPrescriptions() {
         return prescriptions.stream()
@@ -127,13 +131,12 @@ public class DatabaseMedicationService implements MedicationService {
                 .collect(Collectors.toList());
     }
     // - Print a list of all prescriptions issued by a specific doctor
-//    public List<Prescription> returnPrescriptionsByDoctor(Doctor doctor) {
-//        return patients.stream()
-//                .flatMap(patient -> patient.getPrescriptions().stream())
-//                .filter(prescription -> prescription.getDoctor().equals(doctor))
-//                .collect(Collectors.toList());
-//    }
-
+    // public List<Prescription> returnPrescriptionsByDoctor(Doctor doctor) {
+    // return patients.stream()
+    // .flatMap(patient -> patient.getPrescriptions().stream())
+    // .filter(prescription -> prescription.getDoctor().equals(doctor))
+    // .collect(Collectors.toList());
+    // }
 
     public void restockAllMedications(List<Medication> medications, int max) {
         for (Medication medication : medications) {
