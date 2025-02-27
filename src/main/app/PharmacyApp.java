@@ -46,7 +46,7 @@ public class PharmacyApp {
 
         while (!exit) {
             System.out.println("");
-            System.out.println("=====Welcome To The Pharmacy Med Tracking System=====");
+            System.out.println("===== Welcome To The Pharmacy Med Tracking System =====");
             System.out.println("");
             System.out.println("Main Menu Options: ");
             System.out.println("");
@@ -266,7 +266,6 @@ public class PharmacyApp {
             System.out.println("4: Exit");
             System.out.println("");
             System.out.print("Please choose an option: ");
-            System.out.println("");
             int option = scanner.nextInt();
             scanner.nextLine();
             switch (option) {
@@ -406,8 +405,9 @@ public class PharmacyApp {
 
     private static void updatePatientDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter Patient ID to update: ");
         System.out.println("Press Enter to skip updating a field.");
+        System.out.println("");
+        System.out.print("Enter Patient ID to update: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -449,8 +449,9 @@ public class PharmacyApp {
 
     private static void updateDoctorDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter Doctor ID to update: ");
         System.out.println("Press Enter to skip updating a field.");
+        System.out.println("");
+        System.out.print("Enter Doctor ID to update: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -499,8 +500,9 @@ public class PharmacyApp {
 
     private static void updateMedicationDetails(Scanner scanner) {
         System.out.println("");
-        System.out.print("Enter Medication ID to update: ");
         System.out.println("Press Enter to skip updating a field.");
+        System.out.println("");
+        System.out.print("Enter Medication ID to update: ");
         int id = scanner.nextInt();
         scanner.nextLine(); // Consume newline left-over
 
@@ -706,7 +708,6 @@ public class PharmacyApp {
                 """.formatted(CustomUtil.formatList(expiredMedications));
         System.out.println("");
         System.out.println(report);
-        System.out.println("");
     }
 
     private static void printScriptsForDoctorList(Scanner scanner) {
@@ -736,7 +737,6 @@ public class PharmacyApp {
         System.out.println(report);
 
         System.out.println("scriptList");
-        System.out.println("");
 
     }
 
@@ -755,7 +755,6 @@ public class PharmacyApp {
         // patients[0]);
         System.out.println("");
         System.out.println("scriptList");
-        System.out.println("");
 
     }
 
@@ -778,7 +777,6 @@ public class PharmacyApp {
                 CustomUtil.formatList(doctors));
         System.out.println("");
         System.out.println(report);
-        System.out.println("");
     }
 
     // consider using helper methods:
