@@ -51,9 +51,6 @@ public class Patient extends Person {
     public void removePrescription(Prescription prescription) {
         prescriptions.remove(prescription);
     }
-    public void clearPrescriptions() {
-        this.prescriptions = new ArrayList<>();
-    }
 
 
     //Method to get a sorted list of prescription / medication names
