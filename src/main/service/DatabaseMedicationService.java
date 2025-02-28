@@ -63,6 +63,14 @@ public class DatabaseMedicationService implements MedicationService {
                 .collect(Collectors.toList());
     }
 
+    public List<String> getFilterdList(String name) {
+        return medications.stream()
+                .filter(medications -> medications.getName().equalsIgnoreCase(name))
+                .map(medications -> medications.toString() + " ID: " + medications.getId()) // Append ID to the toString
+                                                                                            // result
+                .collect(Collectors.toList());
+    }
+
     // - Restock medications
     public void adjustMedicationInventory(Medication medication, int adjustment) {
         int newQuantity = medication.getStockQuantity() + adjustment;

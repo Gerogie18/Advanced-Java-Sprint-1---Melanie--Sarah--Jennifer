@@ -562,6 +562,7 @@ public class PharmacyApp {
     public static void searchMedication(Scanner scanner) {
         System.out.println("");
         System.out.print("Name: ");
+        String name = scanner.nextLine();
         System.out.println("");
         List<String> filteredList = medicationService.getFilterdList(name);
         System.out.println(filteredList);
