@@ -103,7 +103,7 @@ public class PharmacyApp {
             System.out.println("4. Delete Doctor");
             System.out.println("5. Add Medication");
             System.out.println("6. Delete Medication");
-            System.out.println("7: Exit");
+            System.out.println("7: Return to main menu:");
             System.out.println("");
             System.out.print("Please choose an option: ");
 
