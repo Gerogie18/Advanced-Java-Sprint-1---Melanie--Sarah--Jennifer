@@ -3,9 +3,9 @@
 _Melanie, Sarah and Jennifer_
 
 **MediMinder**  
-MediMinder is a comprehensive pharmacy management application designed to streamline the tracking of medications, doctors, patients, and prescriptions. With its intuitive interface, the app makes it easy to add, edit, or delete patient, doctor, and medication records. It also includes powerful features like a search function and automated report generation, such as inventory summaries and expired medication alerts.
+MediMinder is a pharmacy management application designed to streamline the tracking of medications, doctors, patients, and prescriptions. With its simple interface, the app makes it easy to add, edit, or delete patient, doctor, and medication records. It also includes features like a search function and automated report generation, including inventory summaries and expired medication alerts.
 
-The user-friendly menu ensures a seamless experience, allowing users to navigate and operate the app with minimal effort. MediMinder is the perfect tool to simplify pharmacy operations and enhance efficiency.
+The user-friendly menu makes the experience painless, allowing users to navigate and operate the app with minimal effort. MediMinder is the perfect tool to simplify pharmacy operations and enhance efficiency.
 
 ## How to Download
 
@@ -76,18 +76,18 @@ Inside of the menu, once a task is chosen, there is a submenu that functions in 
 
 1. When you run the program, you will see the following welcome message and menu:
 
-| **===== Welcome To The Pharmacy Med Tracking System =====** |
-| ----------------------------------------------------------- |
-|                                                             |
-| **Main Menu Options:**                                      |
-| 1: Add/Delete a patient, doctor, or medication              |
-| 2: Edit details for a patient, doctor, or medication        |
-| 3: Search                                                   |
-| 4: Prescription Management                                  |
-| 5: Generate Reports                                         |
-| 6: Exit                                                     |
-|                                                             |
-| **Please choose an option:**                                |
+| **===== Welcome To MediMinder! =====**               |
+| ---------------------------------------------------- |
+|                                                      |
+| **Main Menu Options:**                               |
+| 1: Add/Delete a patient, doctor, or medication       |
+| 2: Edit details for a patient, doctor, or medication |
+| 3: Search                                            |
+| 4: Prescription Management                           |
+| 5: Generate Reports                                  |
+| 6: Exit                                              |
+|                                                      |
+| **Please choose an option:**                         |
 
 2. Select the type of task you wish to run by inputting the corresponding number in the option field. This will bring you to that task's specific sub menu.
 3. Select the specific task in the sub menu you wish to run. Depending on the task, there might be additional text inputs for you to enter.
