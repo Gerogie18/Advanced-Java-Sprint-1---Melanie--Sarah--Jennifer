@@ -88,7 +88,9 @@ The program will complete the required task and will notify you if it was succes
    - Patient’s date of birth in the following format: YYYY/MM/DD
    - Patient’s 10-digit phone number
 4. The application will add the patient. If the patient is added correctly, you will see this message:
+
    `“New patient added with id: 1XXXXXXX“` followed by the newly created patient ID.
+
 5. You may select any of the Add/Delete submenu options to continue adding or deleting information, or you can choose option `7` to exit and return to the main menu.
 
 ---
