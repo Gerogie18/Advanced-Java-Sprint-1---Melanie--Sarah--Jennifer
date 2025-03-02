@@ -1,6 +1,6 @@
 # MediMinder
 
-Submitted by: Melanie, Sarah and Jennifer
+_Melanie, Sarah and Jennifer_
 
 **MediMinder**  
 MediMinder is a comprehensive pharmacy management application designed to streamline the tracking of medications, doctors, patients, and prescriptions. With its intuitive interface, the app makes it easy to add, edit, or delete patient, doctor, and medication records. It also includes powerful features like a search function and automated report generation, such as inventory summaries and expired medication alerts.
@@ -37,6 +37,12 @@ The user-friendly menu ensures a seamless experience, allowing users to navigate
 5. Extract the contents of the ZIP file to a directory.
 
 ---
+
+### Prerequisites
+
+Before running the application, ensure you have the following installed:
+
+- **Java Development Kit (JDK)** (Download from [Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) or [OpenJDK](https://openjdk.org/))
 
 ## How to Use
 
