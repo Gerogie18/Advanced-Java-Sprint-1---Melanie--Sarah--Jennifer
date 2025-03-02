@@ -43,6 +43,26 @@ The user-friendly menu ensures a seamless experience, allowing users to navigate
 Before running the application, ensure you have the following installed:
 
 - **Java Development Kit (JDK)** (Download from [Oracle](https://www.oracle.com/java/technologies/javase-downloads.html) or [OpenJDK](https://openjdk.org/))
+- An **Integrated Development Environment (IDE)** such as IntelliJ IDEA, Eclipse, or VS Code.
+
+### How to Run
+
+1. **Open the Project in Your IDE**:
+   - Launch your IDE (e.g., IntelliJ IDEA, Eclipse, or VS Code).
+   - Select **Open** or **Import Project** and navigate to the root directory of the project (where the `src` folder is located).
+   - Ensure the JDK is configured in your IDE.
+2. **Locate the Main Class**:
+   - In the `Project Explorer` or `Package Explorer`, navigate to the `PharmacyApp.java` file located at:
+     ```
+     src/main/app/PharmacyApp.java
+     ```
+3. **Run the Application**:
+   - Right-click on the `PharmacyApp.java` file.
+   - Select **Run** or **Run As > Java Application** (depending on your IDE).
+4. **Follow the On-Screen Instructions**:
+   Once the application starts, you will see the welcome message and main menu. Follow the prompts to navigate and use the system.
+
+---
 
 ## How to Use
 
