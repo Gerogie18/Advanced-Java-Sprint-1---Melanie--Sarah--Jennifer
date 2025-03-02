@@ -52,6 +52,7 @@ When you run the program, you will see the following welcome message and menu:
 
 | **===== Welcome To The Pharmacy Med Tracking System =====** |
 | ----------------------------------------------------------- |
+|                                                             |
 | **Main Menu Options:**                                      |
 | 1: Add/Delete a patient, doctor, or medication              |
 | 2: Edit details for a patient, doctor, or medication        |
