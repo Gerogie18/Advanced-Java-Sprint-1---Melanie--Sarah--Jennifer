@@ -5,19 +5,38 @@ Submitted by: Melanie, Sarah and Jennifer
 ## How to Use
 
 ## Class Relationship Diagram
+![](documentation/svg/RelationshipDiagram.svg)
 
-![Class Relationship Diagram](documentation/ClassRelationshipDiagram.svg "Class Relationship Diagram")
+## UMLS
+### Person Class
+![](documentation/svg/PersonClass.svg)
 
-## UML Diagrams
+### Patient Class
+![](documentation/svg/PatientClass.svg)
 
-![Person UML](documentation/Person_UML.svg "Person UML")
+### Doctor Class
+![](documentation/svg/DoctorClass.svg)
 
-![Doctor UML](documentation/Doctor_UML.svg "Doctor UML")
+### Medication Class 
+![](documentation/svg/MedicationClass.svg)
 
-![Doctor UML](documentation/Doctor_UML.svg "Doctor UML")
+### Prescription Class
+![](documentation/svg/PrescriptionClass.svg)
 
-![Medication UML](documentation/Medication_UML.svg "Medication UML")
+### Patient Service
+![](documentation/svg/PatientService.svg)
 
-![Prescription UML](documentation/Prescription_UML.svg "Prescription UML")
+### Doctor Service
+![](documentation/svg/DoctorService.svg)
 
-![MedicationTrackingSystem UML](documentation/MedicationTrackingSystem_UML.svg "MedicationTrackingSystem UML")
+### Medication Service
+![](documentation/svg/MedicationService.svg)
+
+### Database Patient Service
+![](documentation/svg/DatabasePatientService.svg)
+
+### Database Doctor Service
+![](documentation/svg/DatabaseDoctorService.svg)
+
+### Database Medication Service
+![](documentation/svg/DatabaseMedicationService.svg)

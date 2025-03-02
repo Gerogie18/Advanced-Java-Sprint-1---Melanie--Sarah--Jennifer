@@ -130,6 +130,7 @@ The project will be graded based on the following criteria:
 ### Documentation
 
 #### Presentation
+
 - [ ] 5-10 minute presentation
 
 #### User Documentation
@@ -219,4 +220,3 @@ The project will be graded based on the following criteria:
 ## Useful Links
 
 - [Official Java Docs](https://docs.oracle.com/javase/8/docs/api/)
-- [Lucidchart](https://lucid.app/lucidchart/4fc9544c-5a27-4779-bc85-553e7601ab4c/edit?viewport_loc=3038%2C1071%2C2305%2C1423%2C0_0&invitationId=inv_18568441-38be-4c0f-a086-a805852ad280)
