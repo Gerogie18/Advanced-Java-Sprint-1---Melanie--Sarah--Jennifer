@@ -51,7 +51,7 @@ Inside of the menu, once a task is chosen, there is a submenu that functions in 
 1. Run the program.
    When you run the program, you will see the following welcome message and menu:
 
-````text
+`````text
 ===== Welcome To The Pharmacy Med Tracking System =====
 
 Main Menu Options:
@@ -63,7 +63,7 @@ Main Menu Options:
 5: Generate Reports
 6: Exit
 
-Please choose an option:```
+Please choose an option:````
 
 2. Select the type of task you wish to run by inputting the corresponding number in the option field. This will bring you to that task's specific sub menu.
 3. Select the specific task in the sub menu you wish to run. Depending on the task, there might be additional text inputs for you to enter.
@@ -138,4 +138,4 @@ The program will complete the required task and will notify you if it was succes
 ### Database Medication Service
 
 ![](documentation/svg/DatabaseMedicationService.svg)
-````
+`````
