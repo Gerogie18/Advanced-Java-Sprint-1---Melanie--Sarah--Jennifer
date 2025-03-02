@@ -54,7 +54,7 @@ Inside of the menu, once a task is chosen, there is a submenu that functions in 
 
 ### Main Menu
 
-When you run the program, you will see the following welcome message and menu:
+1. When you run the program, you will see the following welcome message and menu:
 
 | **===== Welcome To The Pharmacy Med Tracking System =====** |
 | ----------------------------------------------------------- |
