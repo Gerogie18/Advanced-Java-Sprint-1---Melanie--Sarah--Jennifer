@@ -7,6 +7,37 @@ MediMinder is a comprehensive pharmacy management application designed to stream
 
 The user-friendly menu ensures a seamless experience, allowing users to navigate and operate the app with minimal effort. MediMinder is the perfect tool to simplify pharmacy operations and enhance efficiency.
 
+## How to Download
+
+### Using Git
+
+1. Open a terminal or command prompt.
+2. Navigate to the directory where you want to download the repository.
+3. Use the following command to clone the repository:
+
+   ```bash
+   git clone https://github.com/Gerogie18/Advanced-Java-Sprint-1---Melanie--Sarah--Jennifer.git
+   ```
+
+### Using GitHub Desktop
+
+1. Download and install GitHub Desktop from the [official website](https://desktop.github.com/).
+2. Open GitHub Desktop and sign in to your GitHub account.
+3. Click on **"File" > "Clone Repository"** in the top menu.
+4. Enter the repository URL or select a repository from your GitHub account.
+5. Choose a local directory to download the repository.
+6. Click **"Clone"** to start the download process.
+
+---
+
+### Using a ZIP File
+
+1. Go to the GitHub repository page.
+2. Click on the **"Code"** button.
+3. Select **"Download ZIP"** from the dropdown menu.
+4. Choose a location to save the ZIP file.
+5. Extract the contents of the ZIP file to a directory.
+
 ## How to Use
 
 MediMinder is a simple text-based application that uses inputs from the user to generate the required information or task. It has a main menu that lists the various tasks available, with a corresponding number to input for each task.
@@ -32,7 +63,7 @@ The program will complete the required task and will notify you if it was succes
 3. The program will require the patient’s information from you. Follow the prompts to enter the correct information as requested:
    - Patient’s first name
    - Patient’s last name
-   - Patient’s date of birth
+   - Patient’s date of birth in the following format: YYYY/MM/DD
    - Patient’s 10-digit phone number
 4. The application will add the patient. If the patient is added correctly, you will see this message:  
    `“New patient added with id: 1XXXXXXX“` followed by the newly created patient ID.
