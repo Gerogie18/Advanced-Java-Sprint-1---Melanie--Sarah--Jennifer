@@ -47,7 +47,7 @@ public class PharmacyApp {
 
         while (!exit) {
             System.out.println("");
-            System.out.println("===== Welcome To The Pharmacy Med Tracking System =====");
+            System.out.println("===== Welcome To MediMinder! =====");
             System.out.println("");
             System.out.println("Main Menu Options: ");
             System.out.println("");
@@ -82,6 +82,7 @@ public class PharmacyApp {
                     exit = true;
                     System.out.println("");
                     System.out.println("Exiting the system...");
+                    System.out.println("Good bye!");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
@@ -131,8 +132,7 @@ public class PharmacyApp {
                 case 7:
                     exit = true;
                     System.out.println("");
-                    System.out.println("Exiting the system...");
-                    System.out.println("Good bye");
+                    System.out.println("Returning to the main menu...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
@@ -168,7 +168,7 @@ public class PharmacyApp {
                 case 4:
                     exit = true;
                     System.out.println("");
-                    System.out.println("Exiting the system...");
+                    System.out.println("Returning to the main menu...");
                     System.out.println("");
                     break;
                 default:
@@ -205,8 +205,7 @@ public class PharmacyApp {
                 case 4:
                     exit = true;
                     System.out.println("");
-                    System.out.println("Exiting the system...");
-                    System.out.println("");
+                    System.out.println("Returning to the main menu...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
@@ -246,8 +245,7 @@ public class PharmacyApp {
                 case 5:
                     exit = true;
                     System.out.println("");
-                    System.out.println("Exiting the system...");
-                    System.out.println("");
+                    System.out.println("Returning to the main menu...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
@@ -283,8 +281,7 @@ public class PharmacyApp {
                 case 4:
                     exit = true;
                     System.out.println("");
-                    System.out.println("Exiting the system...");
-                    System.out.println("");
+                    System.out.println("Returning to the main menu...");
                     break;
                 default:
                     System.out.println("Invalid option, please choose again.");
