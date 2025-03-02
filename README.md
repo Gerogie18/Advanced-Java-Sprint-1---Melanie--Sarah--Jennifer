@@ -9,6 +9,35 @@ The user-friendly menu ensures a seamless experience, allowing users to navigate
 
 ## How to Use
 
+MediMinder is a simple text-based application that uses inputs from the user to generate the required information or task. It has a main menu that lists the various tasks available, with a corresponding number to input for each task.
+
+Inside of the menu, once a task is chosen, there is a submenu that functions in the same manner as the main menu. The user chooses again by inputting the number corresponding to the task they wish to run.
+
+### Steps:
+
+1. Run the program.
+2. Select the type of task you wish to run by inputting the corresponding number in the option field.
+3. Select the specific task you wish to run. Depending on the task, there might be additional text inputs for you to enter.
+
+The program will complete the required task and will notify you if it was successful or not.
+
+---
+
+## Examples
+
+### Adding a Patient:
+
+1. Input `1` from the main menu to enter the Add/Delete submenu.
+2. Input `1` from the Add/Delete submenu.
+3. The program will require the patient’s information from you. Follow the prompts to enter the correct information as requested:
+   - Patient’s first name
+   - Patient’s last name
+   - Patient’s date of birth
+   - Patient’s 10-digit phone number
+4. The application will add the patient. If the patient is added correctly, you will see this message:  
+   `“New patient added with id: 1XXXXXXX“` followed by the newly created patient ID.
+5. You may select any of the Add/Delete submenu options to continue adding or deleting information, or you can choose option `7` to exit and return to the main menu.
+
 ## Class Relationship Diagram
 
 ![](documentation/svg/RelationshipDiagram.svg)
